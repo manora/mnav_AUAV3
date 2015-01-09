@@ -1,0 +1,10 @@
+slprj/*
+*/slprj/*
+*.mexw*
+*.mat
+*.tlog
+*.eps
+*.bak
+*.zip
+*/AUAV_V3_TestMavLink.X/*
+*/mavlink/*
