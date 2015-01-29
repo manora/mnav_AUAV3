@@ -7,4 +7,6 @@ slprj/*
 *.bak
 *.zip
 */AUAV_V3_TestMavLink.X/*
+AUAV_V3_TestMavLink.X/*
 */mavlink/*
+mavlink/*
