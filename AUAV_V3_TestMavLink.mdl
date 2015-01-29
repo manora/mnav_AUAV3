@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.91"
+    ComputedModelVersion    "1.96"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,9 +31,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "UglyRed"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sat Jan 10 00:43:56 2015"
-  RTWModifiedTimeStamp	  342744436
-  ModelVersionFormat	  "1.%<AutoIncrement:91>"
+  LastModifiedDate	  "Thu Jan 29 21:00:40 2015"
+  RTWModifiedTimeStamp	  344465893
+  ModelVersionFormat	  "1.%<AutoIncrement:96>"
   ConfigurationManager	  "none"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -424,7 +424,7 @@ Model {
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
 	  CustomInclude		  "mavlink\\include\\common\\\nclib\\"
-	  CustomSource		  "clib\\MavlinkComm.c"
+	  CustomSource		  "clib\\MavlinkComm.c\nclib\\gpsUblox.c"
 	  IncludeHyperlinkInReport on
 	  LaunchReport		  on
 	  TargetLang		  "C"
@@ -804,15 +804,15 @@ Model {
 		"x2num('[]'),0,0);s(3).Value=reshape([0.05 0],1,2);s(3).Description='Discrete 3';s(3).ColorRGBValue=reshape([0 0 0.8]"
 		",1,3);s(3).Annotation='D3';s(3).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(4).Value=reshape([0.1 0],1,2);s(4).D"
 		"escription='Discrete 4';s(4).ColorRGBValue=reshape([0.38 0.74 0.99],1,3);s(4).Annotation='D4';s(4).OwnerBlock=reshap"
-		"e(MCHP_FunHex2num('[]'),0,0);s(5).Value=reshape([0.25 0],1,2);s(5).Description='Discrete 5';s(5).ColorRGBValue=resha"
-		"pe([0.42 0.59 0.24],1,3);s(5).Annotation='D5';s(5).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(6).Value=reshape("
-		"[0.5 0],1,2);s(6).Description='Discrete 6';s(6).ColorRGBValue=reshape([1 0.5 0],1,3);s(6).Annotation='D6';s(6).Owner"
-		"Block=reshape(MCHP_FunHex2num('[]'),0,0);s(7).Value=reshape([Inf 0],1,2);s(7).Description='Constant';s(7).ColorRGBVa"
-		"lue=reshape([1 0.26 0.82],1,3);s(7).Annotation='Inf';s(7).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(8).Value=r"
-		"eshape(MCHP_FunHex2num('[]'),0,0);s(8).Description='Triggered';s(8).ColorRGBValue=reshape([0 0.82 0.82],1,3);s(8).An"
-		"notation='T';s(8).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(9).Value=reshape(MCHP_FunHex2num('[]'),0,0);s(9).D"
-		"escription='Hybrid';s(9).ColorRGBValue=reshape([0.91 0.82 0.32],1,3);s(9).Annotation='H';s(9).OwnerBlock=reshape(MCH"
-		"P_FunHex2num('[]'),0,0);"
+		"e(MCHP_FunHex2num('[]'),0,0);s(5).Value=reshape([0.2 0],1,2);s(5).Description='Discrete 5';s(5).ColorRGBValue=reshap"
+		"e([0.42 0.59 0.24],1,3);s(5).Annotation='D5';s(5).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(6).Value=reshape(["
+		"0.25 0],1,2);s(6).Description='Discrete 6';s(6).ColorRGBValue=reshape([1 0.5 0],1,3);s(6).Annotation='D6';s(6).Owner"
+		"Block=reshape(MCHP_FunHex2num('[]'),0,0);s(7).Value=reshape([0.5 0],1,2);s(7).Description='Discrete 7';s(7).ColorRGB"
+		"Value=reshape([1 0.5 0],1,3);s(7).Annotation='D7';s(7).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(8).Value=resh"
+		"ape([Inf 0],1,2);s(8).Description='Constant';s(8).ColorRGBValue=reshape([1 0.26 0.82],1,3);s(8).Annotation='Inf';s(8"
+		").OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(9).Value=reshape(MCHP_FunHex2num('[]'),0,0);s(9).Description='Hybr"
+		"id';s(9).ColorRGBValue=reshape([0.91 0.82 0.32],1,3);s(9).Annotation='H';s(9).OwnerBlock=reshape(MCHP_FunHex2num('[]"
+		"'),0,0);"
 	      }
 	    }
 	    PropName		    "Components"
@@ -822,8 +822,8 @@ Model {
       }
       Name		      "Configuration"
       ExtraOptions	      "-aGenerateTraceInfo=1 -aIgnoreTestpoints=0 "
-      CurrentDlgPage	      "Diagnostics/Data Validity"
-      ConfigPrmDlgPosition     [ 1714, -110, 2595, 440 ] 
+      CurrentDlgPage	      "Code Generation/Custom Code"
+      ConfigPrmDlgPosition     [ 400, 125, 1281, 863 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -1037,7 +1037,7 @@ Model {
   }
   System {
     Name		    "AUAV_V3_TestMavLink"
-    Location		    [336, 126, 1458, 875]
+    Location		    [325, 111, 1488, 865]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -1051,13 +1051,43 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "116"
+    SIDHighWatermark	    "126"
+    Block {
+      BlockType		      Reference
+      Name		      " gpsUbloxParse"
+      SID		      "118"
+      Ports		      []
+      Position		      [220, 407, 380, 463]
+      LibraryVersion	      "3.36"
+      SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
+      SourceType	      "C Function Call"
+      ParseFilesChkbx	      on
+      ListFunctions1	      "Custom Function"
+      Function1		      "void gpsUbloxParse(void)"
+      AddHeaderDeclaration    on
+      Function1Type	      "when block is updated (default)"
+      FctReturnBlockOut	      on
+      DataCollected	      "s.chksm=reshape({ '1712811-Jan-2015 00:49:34','1687227-Jan-2015 00:07:03'},1,2);s.File1=res"
+      "hape({ '  void  decodeGPS(GPS* gps,unsigned char id,const char* buff, unsigned int buffPtr,unsigned int nbrField"
+      "s)','  GPS  UART_GPS_Decode(void)'},1,2);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDe"
+      "g(unsigned char degrees, float minutes)',' unsigned int  getLength(void)',' unsigned char  peak(void)',' unsigne"
+      "d char  readFront(void)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(voi"
+      "d)','  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* s"
+      "tringToTokenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(un"
+      "signed char* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,13);"
+      ORDERING		      "None"
+      SampleTime	      "0.2"
+      MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+      PinDigitalInput	      "[]"
+      PinDigitalOutput	      "[]   "
+      PinAnalogInput	      "[]"
+    }
     Block {
       BlockType		      Reference
       Name		      "BUS I2C\nInitialize HMC5883\nre-initialize at 0.5Hz"
       SID		      "29"
       Ports		      []
-      Position		      [672, 97, 742, 127]
+      Position		      [822, 102, 892, 132]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/BUS I2C/BUS I2C\nMASTER"
       SourceType	      "I2C Driver"
@@ -1087,7 +1117,7 @@ Model {
       Name		      "BUS I2C\nRead HMC5883\nMagn\n(50 Hz)"
       SID		      "30"
       Ports		      [0, 1]
-      Position		      [80, 864, 225, 916]
+      Position		      [15, 864, 160, 916]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/BUS I2C/BUS I2C\nMASTER"
       SourceType	      "I2C Driver"
@@ -1120,7 +1150,7 @@ Model {
       Name		      "BUS SPI\nInitialize MPU 6000\nOnce at Startup"
       SID		      "14"
       Ports		      []
-      Position		      [570, 97, 640, 127]
+      Position		      [720, 102, 790, 132]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/BUS SPI/BUS SPI"
       SourceType	      "SPI Driver"
@@ -1181,7 +1211,7 @@ Model {
       Name		      "BUS SPI\nRead MPU 6050\nAxyz, T°, Gxyz\n(1 kHz)"
       SID		      "15"
       Ports		      [0, 3]
-      Position		      [80, 426, 225, 574]
+      Position		      [40, 636, 185, 784]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/BUS SPI/BUS SPI"
       SourceType	      "SPI Driver"
@@ -1226,7 +1256,7 @@ Model {
       BlockType		      Constant
       Name		      "COMP_ID"
       SID		      "79"
-      Position		      [505, 445, 535, 475]
+      Position		      [605, 445, 635, 475]
       ZOrder		      -4
       OutDataTypeStr	      "uint8"
     }
@@ -1279,7 +1309,7 @@ Model {
       BlockType		      DataStoreMemory
       Name		      "Data Store"
       SID		      "71"
-      Position		      [45, 638, 155, 663]
+      Position		      [40, 383, 149, 407]
       ZOrder		      -4
       BackgroundColor	      "lightBlue"
       DataStoreName	      "mlRawIMU"
@@ -1292,7 +1322,7 @@ Model {
       BlockType		      DataStoreMemory
       Name		      "Data Store2"
       SID		      "80"
-      Position		      [45, 688, 155, 713]
+      Position		      [40, 433, 149, 457]
       ZOrder		      -4
       BackgroundColor	      "lightBlue"
       DataStoreName	      "time_since_boot_usec"
@@ -1305,7 +1335,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "Data Type Conversion"
       SID		      "92"
-      Position		      [380, 613, 425, 627]
+      Position		      [380, 713, 425, 727]
       ZOrder		      -5
       ShowName		      off
       OutDataTypeStr	      "int16"
@@ -1316,7 +1346,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "Data Type Conversion1"
       SID		      "93"
-      Position		      [380, 633, 425, 647]
+      Position		      [380, 733, 425, 747]
       ZOrder		      -5
       ShowName		      off
       OutDataTypeStr	      "int16"
@@ -1327,7 +1357,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "Data Type Conversion2"
       SID		      "94"
-      Position		      [380, 653, 425, 667]
+      Position		      [380, 753, 425, 767]
       ZOrder		      -5
       ShowName		      off
       OutDataTypeStr	      "int16"
@@ -1338,7 +1368,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "Data Type Conversion3"
       SID		      "95"
-      Position		      [380, 673, 425, 687]
+      Position		      [380, 773, 425, 787]
       ZOrder		      -5
       ShowName		      off
       OutDataTypeStr	      "int16"
@@ -1349,7 +1379,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "Data Type Conversion4"
       SID		      "96"
-      Position		      [380, 693, 425, 707]
+      Position		      [380, 793, 425, 807]
       ZOrder		      -5
       ShowName		      off
       OutDataTypeStr	      "int16"
@@ -1360,7 +1390,7 @@ Model {
       BlockType		      DataTypeConversion
       Name		      "Data Type Conversion5"
       SID		      "97"
-      Position		      [380, 713, 425, 727]
+      Position		      [380, 813, 425, 827]
       ZOrder		      -5
       ShowName		      off
       OutDataTypeStr	      "int16"
@@ -1372,7 +1402,7 @@ Model {
       Name		      "Demux1"
       SID		      "25"
       Ports		      [1, 3]
-      Position		      [280, 415, 285, 485]
+      Position		      [285, 625, 290, 695]
       ShowName		      off
       Outputs		      "3"
       DisplayOption	      "bar"
@@ -1400,7 +1430,7 @@ Model {
       Name		      "Demux2"
       SID		      "26"
       Ports		      [1, 3]
-      Position		      [280, 515, 285, 585]
+      Position		      [285, 725, 290, 795]
       ShowName		      off
       Outputs		      "3"
       DisplayOption	      "bar"
@@ -1428,7 +1458,7 @@ Model {
       Name		      "Demux3"
       SID		      "31"
       Ports		      [1, 6]
-      Position		      [280, 805, 285, 970]
+      Position		      [215, 805, 220, 970]
       ShowName		      off
       Outputs		      "6"
       DisplayOption	      "bar"
@@ -1438,7 +1468,7 @@ Model {
       Name		      "Flashing LEDs\nDISCO"
       SID		      "75"
       Ports		      []
-      Position		      [795, 210, 914, 274]
+      Position		      [905, 215, 1024, 279]
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
       RTWSystemCode	      "Auto"
@@ -1659,7 +1689,7 @@ Model {
       Name		      "Get Raw IMU"
       SID		      "89"
       Ports		      [0, 1]
-      Position		      [565, 482, 650, 508]
+      Position		      [665, 482, 750, 508]
       ZOrder		      -5
       BackgroundColor	      "orange"
       DataStoreName	      "mlRawIMU"
@@ -1667,10 +1697,20 @@ Model {
     }
     Block {
       BlockType		      DataStoreRead
+      Name		      "Get RawGpsInt"
+      SID		      "120"
+      Ports		      [0, 1]
+      Position		      [670, 748, 745, 772]
+      ZOrder		      -5
+      BackgroundColor	      "orange"
+      DataStoreName	      "mlGpsData"
+    }
+    Block {
+      BlockType		      DataStoreRead
       Name		      "Get time"
       SID		      "81"
       Ports		      [0, 1]
-      Position		      [495, 517, 645, 543]
+      Position		      [505, 517, 655, 543]
       ZOrder		      -5
       BackgroundColor	      "orange"
       DataStoreName	      "time_since_boot_usec"
@@ -1682,6 +1722,17 @@ Model {
       SID		      "84"
       Ports		      [0, 1]
       Position		      [80, 252, 230, 278]
+      ZOrder		      -5
+      BackgroundColor	      "orange"
+      DataStoreName	      "time_since_boot_usec"
+      DataStoreElements	      "time_since_boot_usec"
+    }
+    Block {
+      BlockType		      DataStoreRead
+      Name		      "Get time2"
+      SID		      "126"
+      Ports		      [0, 1]
+      Position		      [515, 772, 665, 798]
       ZOrder		      -5
       BackgroundColor	      "orange"
       DataStoreName	      "time_since_boot_usec"
@@ -2097,10 +2148,46 @@ Model {
     }
     Block {
       BlockType		      Reference
+      Name		      "PackGpsRawInt"
+      SID		      "123"
+      Ports		      [4, 1]
+      Position		      [800, 698, 960, 797]
+      LibraryVersion	      "3.36"
+      SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
+      SourceType	      "C Function Call"
+      ParseFilesChkbx	      on
+      ListFunctions1	      "Custom Function"
+      Function1		      "uint16_t PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGps"
+      "DataInt ,uint32_t time_usec)"
+      AddHeaderDeclaration    on
+      Function1Type	      "when block is updated (default)"
+      Fct1BlockIn	      "system_id  , component_id  , mlRawGpsDataInt  , time_usec"
+      FctReturnBlockOut	      on
+      DataCollected	      "s.chksm=reshape({ '546229-Jan-2015 20:52:48','1687329-Jan-2015 17:08:25'},1,2);s.File1=resh"
+      "ape({ '  uint16_t  PackHeartBeat(uint8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t syst"
+      "em_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t"
+      " mlRawIMUData ,uint32_t time_usec)','  uint16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_"
+      "gps_raw_int_t mlRawGpsDataInt ,uint32_t time_usec)','  char  sendQGCDebugMessage(const char * dbgMessage, char s"
+      "everity, unsigned char* bytesToAdd, char positionStart)','  uint8_t  GetCharAtBuffIdx(int32_t idx)','  void  TxN"
+      "_Data_OverU1(uint16_t N)'},1,7);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDeg(unsigne"
+      "d char degrees, float minutes)',' unsigned int  getLength(void)',' unsigned char  peak(void)',' unsigned char  r"
+      "eadFront(void)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','  vo"
+      "id  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToTo"
+      "kenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned ch"
+      "ar* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,13);"
+      ORDERING		      "None"
+      SampleTime	      "0.2"
+      MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+      PinDigitalInput	      "[]"
+      PinDigitalOutput	      "[]   "
+      PinAnalogInput	      "[]"
+    }
+    Block {
+      BlockType		      Reference
       Name		      "PackHeartBeat"
       SID		      "109"
       Ports		      [2, 1]
-      Position		      [700, 576, 860, 674]
+      Position		      [800, 576, 960, 674]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2111,10 +2198,18 @@ Model {
       Function1Type	      "when block is updated (default)"
       Fct1BlockIn	      "system_id  , component_id"
       FctReturnBlockOut	      on
-      DataCollected	      "s.chksm={ '563309-Jan-2015 23:25:22'};s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t "
-      "system_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_i"
-      "mu_t mlRawIMUData ,uint32_t time_usec)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, uns"
-      "igned char* bytesToAdd, char positionStart)','  uint8_t  GetCharAtBuffIdx(int32_t idx)'},1,4);"
+      DataCollected	      "s.chksm=reshape({ '546229-Jan-2015 20:52:48','1687329-Jan-2015 17:08:25'},1,2);s.File1=resh"
+      "ape({ '  uint16_t  PackHeartBeat(uint8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t syst"
+      "em_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t"
+      " mlRawIMUData ,uint32_t time_usec)','  uint16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_"
+      "gps_raw_int_t mlRawGpsDataInt ,uint32_t time_usec)','  char  sendQGCDebugMessage(const char * dbgMessage, char s"
+      "everity, unsigned char* bytesToAdd, char positionStart)','  uint8_t  GetCharAtBuffIdx(int32_t idx)','  void  TxN"
+      "_Data_OverU1(uint16_t N)'},1,7);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDeg(unsigne"
+      "d char degrees, float minutes)',' unsigned int  getLength(void)',' unsigned char  peak(void)',' unsigned char  r"
+      "eadFront(void)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','  vo"
+      "id  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToTo"
+      "kenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned ch"
+      "ar* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,13);"
       ORDERING		      "None"
       SampleTime	      "0.5"
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
@@ -2127,7 +2222,7 @@ Model {
       Name		      "PackRawIMU"
       SID		      "108"
       Ports		      [4, 1]
-      Position		      [700, 410, 860, 545]
+      Position		      [800, 410, 960, 545]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2139,11 +2234,17 @@ Model {
       Function1Type	      "when block is updated (default)"
       Fct1BlockIn	      "system_id  , component_id  , mlRawIMUData  , time_usec"
       FctReturnBlockOut	      on
-      DataCollected	      "s.chksm={ '452509-Jan-2015 23:52:22'};s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t "
-      "system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t"
-      "  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  ch"
-      "ar  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)',"
-      "'  uint8_t  GetCharAtBuffIdx(int32_t idx)','  void  TxN_Data_OverU1(uint16_t N)'},1,6);"
+      DataCollected	      "s.chksm=reshape({ '452509-Jan-2015 23:52:22','1687329-Jan-2015 17:08:25'},1,2);s.File1=resh"
+      "ape({ '  uint16_t  PackHeartBeat(uint8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t syst"
+      "em_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t"
+      " mlRawIMUData ,uint32_t time_usec)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigne"
+      "d char* bytesToAdd, char positionStart)','  uint8_t  GetCharAtBuffIdx(int32_t idx)','  void  TxN_Data_OverU1(uin"
+      "t16_t N)'},1,6);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDeg(unsigned char degrees, "
+      "float minutes)',' unsigned int  getLength(void)',' unsigned char  peak(void)',' unsigned char  readFront(void)',"
+      "' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','  void  getGpsUbloxM"
+      "ainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToTokenize, char tok"
+      "en, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned char* stream)',' u"
+      "nsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,13);"
       ORDERING		      "None"
       SampleTime	      "0.02"
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
@@ -2156,7 +2257,7 @@ Model {
       Name		      "Port Info"
       SID		      "61"
       Ports		      []
-      Position		      [677, 697, 841, 952]
+      Position		      [1152, 137, 1316, 392]
       DropShadow	      on
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/System Info/Port Info"
@@ -2186,7 +2287,7 @@ Model {
       Name		      "Subsystem10"
       SID		      "32"
       Ports		      [2, 1]
-      Position		      [320, 914, 370, 961]
+      Position		      [255, 914, 305, 961]
       ForegroundColor	      "[0.901961, 0.000000, 0.000000]"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2341,7 +2442,7 @@ Model {
       Name		      "Subsystem8"
       SID		      "41"
       Ports		      [2, 1]
-      Position		      [320, 814, 370, 861]
+      Position		      [255, 814, 305, 861]
       ForegroundColor	      "[0.901961, 0.000000, 0.000000]"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2496,7 +2597,7 @@ Model {
       Name		      "Subsystem9"
       SID		      "50"
       Ports		      [2, 1]
-      Position		      [320, 864, 370, 911]
+      Position		      [255, 864, 305, 911]
       ForegroundColor	      "[0.901961, 0.000000, 0.000000]"
       MinAlgLoopOccurrences   off
       PropExecContextOutsideSubsystem off
@@ -2665,7 +2766,7 @@ Model {
       Name		      "TX_N_Data"
       SID		      "115"
       Ports		      [1]
-      Position		      [905, 412, 1065, 548]
+      Position		      [1005, 412, 1165, 548]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2693,7 +2794,35 @@ Model {
       Name		      "TX_N_Data1"
       SID		      "116"
       Ports		      [1]
-      Position		      [905, 576, 1065, 674]
+      Position		      [1005, 576, 1165, 674]
+      LibraryVersion	      "3.36"
+      SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
+      SourceType	      "C Function Call"
+      ParseFilesChkbx	      on
+      ListFunctions1	      "Custom Function"
+      Function1		      "void TxN_Data_OverU1(uint16_t N)"
+      AddHeaderDeclaration    on
+      Function1Type	      "when block is updated (default)"
+      Fct1BlockIn	      "N"
+      FctReturnBlockOut	      on
+      DataCollected	      "s.chksm={ '452509-Jan-2015 23:52:22'};s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t "
+      "system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t"
+      "  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  ch"
+      "ar  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)',"
+      "'  uint8_t  GetCharAtBuffIdx(int32_t idx)','  void  TxN_Data_OverU1(uint16_t N)'},1,6);"
+      ORDERING		      "None"
+      SampleTime	      "-1"
+      MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+      PinDigitalInput	      "[]"
+      PinDigitalOutput	      "[]   "
+      PinAnalogInput	      "[]"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "TX_N_Data2"
+      SID		      "124"
+      Ports		      [1]
+      Position		      [1005, 701, 1165, 799]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2721,7 +2850,7 @@ Model {
       Name		      "Timer Info"
       SID		      "62"
       Ports		      []
-      Position		      [772, 97, 904, 152]
+      Position		      [922, 102, 1054, 157]
       DropShadow	      on
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/System Info/Timer Info"
@@ -2775,11 +2904,57 @@ Model {
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
     }
     Block {
+      BlockType		      Reference
+      Name		      "UART Configuration\nUAV V3 UART 4\nGPS"
+      SID		      "119"
+      Ports		      []
+      Position		      [570, 97, 670, 153]
+      LibraryVersion	      "3.36"
+      SourceBlock	      "MCHP_Blockset/BUS UART/UART Configuration"
+      SourceType	      "Configuration for UART peripheral"
+      UART_REF		      "4"
+      BAUD_Choice	      "Dynamic Options"
+      BAUD_Choice_TXT	      "   38400         [-0.06%]"
+      BAUD_Choice_IR	      "Dynamic Options"
+      BAUD_Choice_IR_TXT      "[]"
+      BAUD_Custom	      "115200"
+      IRDA		      off
+      ALT_IO		      on
+      PIN_RX		      "Dynamic Options"
+      PIN_RX_TXT	      "E6 / P86 / Pin[4]"
+      PIN_TX		      "Dynamic Options"
+      PIN_TX_TXT	      "E5 / P85 / Pin[3]"
+      FlowControl	      "None"
+      PIN_CTS		      "Dynamic Options"
+      PIN_CTS_TXT	      "A0 / P16 / Pin[17]"
+      PIN_RTS		      "Dynamic Options"
+      PIN_RTS_TXT	      "D0 / P64 / Pin[72]"
+      MCHP_PORT		      "{UART4  Rx}{U4RX}3:0:P86;{UART4  Tx}{U4TX}3:1:P85;"
+      TX_IMPLEMENTATION	      "Circular Buffer"
+      TX_INT_PRIORITY	      "1"
+      TX_INT_WHEN	      "is empty & last char is sent"
+      TX_CIRCULAR_SIZE	      "128"
+      TX_DMA_CHANNEL	      "0   (Lowest Priority)"
+      TX_DMA_SIZE	      "[]"
+      RX_IMPLEMENTATION	      "Circular Buffer"
+      RX_INT_PRIORITY	      "1"
+      RX_INT_WHEN	      "receive 1 character"
+      RX_CIRCULAR_SIZE	      "128"
+      InitSequence_chkbox     off
+      BAUD_Choice_InitSeq     "Dynamic Options"
+      BAUD_Choice_InitSeq_TXT "     110         [-0.00%]"
+      BAUD_Choice_IR_InitSeq  "Dynamic Options"
+      BAUD_Choice_IR_InitSeq_TXT "0"
+      BAUD_Custom_InitSeq     "0"
+      InitSequence	      "'Hello World'"
+      MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+    }
+    Block {
       BlockType		      DataStoreWrite
       Name		      "Update Raw IMU DATA"
       SID		      "74"
       Ports		      [9]
-      Position		      [445, 602, 510, 798]
+      Position		      [445, 702, 510, 898]
       ZOrder		      -6
       BackgroundColor	      "orange"
       DataStoreName	      "mlRawIMU"
@@ -2796,6 +2971,20 @@ Model {
       BackgroundColor	      "orange"
       DataStoreName	      "time_since_boot_usec"
       DataStoreElements	      "time_since_boot_usec"
+    }
+    Block {
+      BlockType		      DataStoreMemory
+      Name		      "mlGpsData"
+      SID		      "117"
+      Position		      [40, 484, 150, 509]
+      ZOrder		      -4
+      BackgroundColor	      "lightBlue"
+      DataStoreName	      "mlGpsData"
+      ReadBeforeWriteMsg      "warning"
+      WriteAfterWriteMsg      "warning"
+      WriteAfterReadMsg	      "warning"
+      RTWStateStorageClass    "ExportedGlobal"
+      OutDataTypeStr	      "Bus: mavlink_gps_raw_int_t"
     }
     Line {
       Name		      "U1 CH8"
@@ -2816,7 +3005,7 @@ Model {
       Labels		      [0, 1]
       SrcBlock		      "Demux1"
       SrcPort		      3
-      Points		      [55, 0; 0, 185]
+      Points		      [55, 0; 0, 75]
       DstBlock		      "Data Type Conversion2"
       DstPort		      1
     }
@@ -2825,7 +3014,7 @@ Model {
       Labels		      [0, 1]
       SrcBlock		      "Demux1"
       SrcPort		      1
-      Points		      [75, 0]
+      Points		      [75, 0; 0, 85]
       DstBlock		      "Data Type Conversion"
       DstPort		      1
     }
@@ -2834,7 +3023,7 @@ Model {
       Labels		      [0, 1]
       SrcBlock		      "Demux1"
       SrcPort		      2
-      Points		      [65, 0; 0, 190]
+      Points		      [65, 0; 0, 80]
       DstBlock		      "Data Type Conversion1"
       DstPort		      1
     }
@@ -2843,7 +3032,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Demux2"
       SrcPort		      1
-      Points		      [45, 0; 0, 155]
+      Points		      [45, 0; 0, 45]
       DstBlock		      "Data Type Conversion3"
       DstPort		      1
     }
@@ -2852,7 +3041,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Demux2"
       SrcPort		      2
-      Points		      [35, 0; 0, 150]
+      Points		      [35, 0; 0, 40]
       DstBlock		      "Data Type Conversion4"
       DstPort		      1
     }
@@ -2861,7 +3050,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Demux2"
       SrcPort		      3
-      Points		      [25, 0; 0, 145]
+      Points		      [25, 0; 0, 35]
       DstBlock		      "Data Type Conversion5"
       DstPort		      1
     }
@@ -2912,7 +3101,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Subsystem9"
       SrcPort		      1
-      Points		      [25, 0; 0, -130]
+      Points		      [25, 0; 0, -30]
       DstBlock		      "Update Raw IMU DATA"
       DstPort		      8
     }
@@ -2921,7 +3110,6 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Subsystem8"
       SrcPort		      1
-      Points		      [10, 0; 0, -100]
       DstBlock		      "Update Raw IMU DATA"
       DstPort		      7
     }
@@ -2930,7 +3118,7 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Subsystem10"
       SrcPort		      1
-      Points		      [40, 0; 0, -160]
+      Points		      [40, 0; 0, -60]
       DstBlock		      "Update Raw IMU DATA"
       DstPort		      9
     }
@@ -2974,15 +3162,22 @@ Model {
     Line {
       SrcBlock		      "SYS_ID"
       SrcPort		      1
-      Points		      [150, 0]
+      Points		      [250, 0]
       Branch {
 	DstBlock		"PackRawIMU"
 	DstPort			1
       }
       Branch {
 	Points			[0, 175]
-	DstBlock		"PackHeartBeat"
-	DstPort			1
+	Branch {
+	  DstBlock		  "PackHeartBeat"
+	  DstPort		  1
+	}
+	Branch {
+	  Points		  [0, 110]
+	  DstBlock		  "PackGpsRawInt"
+	  DstPort		  1
+	}
       }
     }
     Line {
@@ -2995,8 +3190,15 @@ Model {
       }
       Branch {
 	Points			[0, 190]
-	DstBlock		"PackHeartBeat"
-	DstPort			2
+	Branch {
+	  DstBlock		  "PackHeartBeat"
+	  DstPort		  2
+	}
+	Branch {
+	  Points		  [0, 85]
+	  DstBlock		  "PackGpsRawInt"
+	  DstPort		  2
+	}
       }
     }
     Line {
@@ -3058,6 +3260,24 @@ Model {
       SrcPort		      1
       DstBlock		      "TX_N_Data1"
       DstPort		      1
+    }
+    Line {
+      SrcBlock		      "PackGpsRawInt"
+      SrcPort		      1
+      DstBlock		      "TX_N_Data2"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Get RawGpsInt"
+      SrcPort		      1
+      DstBlock		      "PackGpsRawInt"
+      DstPort		      3
+    }
+    Line {
+      SrcBlock		      "Get time2"
+      SrcPort		      1
+      DstBlock		      "PackGpsRawInt"
+      DstPort		      4
     }
   }
 }
