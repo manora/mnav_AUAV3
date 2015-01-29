@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.98"
+    ComputedModelVersion    "1.102"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,9 +31,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "UglyRed"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Thu Jan 29 23:41:04 2015"
-  RTWModifiedTimeStamp	  344473658
-  ModelVersionFormat	  "1.%<AutoIncrement:98>"
+  LastModifiedDate	  "Fri Jan 30 00:51:14 2015"
+  RTWModifiedTimeStamp	  344479856
+  ModelVersionFormat	  "1.%<AutoIncrement:102>"
   ConfigurationManager	  "none"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -1018,26 +1018,10 @@ Model {
       Variant		      off
       GeneratePreprocessorConditionals off
     }
-    Block {
-      BlockType		      Sum
-      IconShape		      "rectangular"
-      Inputs		      "++"
-      CollapseMode	      "All dimensions"
-      CollapseDim	      "1"
-      InputSameDT	      on
-      AccumDataTypeStr	      "Inherit: Inherit via internal rule"
-      OutMin		      "[]"
-      OutMax		      "[]"
-      OutDataTypeStr	      "Inherit: Same as first input"
-      LockScale		      off
-      RndMeth		      "Floor"
-      SaturateOnIntegerOverflow	on
-      SampleTime	      "-1"
-    }
   }
   System {
     Name		    "AUAV_V3_TestMavLink"
-    Location		    [265, 82, 1353, 964]
+    Location		    [265, 82, 1538, 796]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -1051,7 +1035,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "126"
+    SIDHighWatermark	    "133"
     Block {
       BlockType		      Reference
       Name		      " gpsUbloxParse"
@@ -1256,7 +1240,7 @@ Model {
       BlockType		      Constant
       Name		      "COMP_ID"
       SID		      "79"
-      Position		      [605, 445, 635, 475]
+      Position		      [670, 445, 700, 475]
       ZOrder		      -4
       OutDataTypeStr	      "uint8"
     }
@@ -1288,6 +1272,19 @@ Model {
       DEBUG_INFO	      off
       AssemblyListing	      off
       ProduceHexOutput	      off
+    }
+    Block {
+      BlockType		      Reference
+      Name		      "Counter\nFree-Running"
+      SID		      "128"
+      Ports		      [0, 1]
+      Position		      [80, 260, 110, 290]
+      ZOrder		      -6
+      LibraryVersion	      "1.256"
+      SourceBlock	      "simulink/Sources/Counter\nFree-Running"
+      SourceType	      "Counter Free-Running"
+      NumBits		      "32"
+      tsamp		      "T"
     }
     Block {
       BlockType		      Reference
@@ -1368,6 +1365,17 @@ Model {
       ZOrder		      -5
       ShowName		      off
       OutDataTypeStr	      "int16"
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	off
+    }
+    Block {
+      BlockType		      DataTypeConversion
+      Name		      "Data Type Conversion6"
+      SID		      "129"
+      Position		      [250, 268, 295, 282]
+      ZOrder		      -5
+      ShowName		      off
+      OutDataTypeStr	      "uint32"
       RndMeth		      "Floor"
       SaturateOnIntegerOverflow	off
     }
@@ -1651,9 +1659,9 @@ Model {
       BlockType		      Gain
       Name		      "Gain"
       SID		      "85"
-      Position		      [175, 315, 230, 355]
+      Position		      [165, 255, 220, 295]
       ZOrder		      -8
-      Gain		      "10e6"
+      Gain		      "T*10e6"
       ParamDataTypeStr	      "Inherit: Inherit via internal rule"
       OutDataTypeStr	      "Inherit: Inherit via internal rule"
       SaturateOnIntegerOverflow	off
@@ -1663,7 +1671,7 @@ Model {
       Name		      "Get Raw IMU"
       SID		      "89"
       Ports		      [0, 1]
-      Position		      [665, 482, 750, 508]
+      Position		      [730, 482, 815, 508]
       ZOrder		      -5
       BackgroundColor	      "orange"
       DataStoreName	      "mlRawIMU"
@@ -1674,7 +1682,7 @@ Model {
       Name		      "Get RawGpsInt"
       SID		      "120"
       Ports		      [0, 1]
-      Position		      [670, 748, 745, 772]
+      Position		      [735, 748, 810, 772]
       ZOrder		      -5
       BackgroundColor	      "orange"
       DataStoreName	      "mlGpsData"
@@ -1684,7 +1692,7 @@ Model {
       Name		      "Get time"
       SID		      "81"
       Ports		      [0, 1]
-      Position		      [505, 517, 655, 543]
+      Position		      [570, 517, 720, 543]
       ZOrder		      -5
       BackgroundColor	      "orange"
       DataStoreName	      "time_since_boot_usec"
@@ -1693,20 +1701,9 @@ Model {
     Block {
       BlockType		      DataStoreRead
       Name		      "Get time1"
-      SID		      "84"
-      Ports		      [0, 1]
-      Position		      [80, 252, 230, 278]
-      ZOrder		      -5
-      BackgroundColor	      "orange"
-      DataStoreName	      "time_since_boot_usec"
-      DataStoreElements	      "time_since_boot_usec"
-    }
-    Block {
-      BlockType		      DataStoreRead
-      Name		      "Get time2"
       SID		      "126"
       Ports		      [0, 1]
-      Position		      [515, 772, 665, 798]
+      Position		      [580, 772, 730, 798]
       ZOrder		      -5
       BackgroundColor	      "orange"
       DataStoreName	      "time_since_boot_usec"
@@ -1770,6 +1767,20 @@ Model {
       "2  3  4  5]:210000;"
       MCHP_TIMER_RESULT	      "[1 26249.000000000011 ;1 26249.000000000011 ]"
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+    }
+    Block {
+      BlockType		      DataStoreMemory
+      Name		      "MPU_T"
+      SID		      "132"
+      Position		      [40, 478, 149, 502]
+      ZOrder		      -4
+      BackgroundColor	      "lightBlue"
+      DataStoreName	      "MPU_T"
+      ReadBeforeWriteMsg      "warning"
+      WriteAfterWriteMsg      "warning"
+      WriteAfterReadMsg	      "warning"
+      RTWStateStorageClass    "ExportedGlobal"
+      OutDataTypeStr	      "uint16"
     }
     Block {
       BlockType		      Reference
@@ -2125,7 +2136,7 @@ Model {
       Name		      "PackGpsRawInt"
       SID		      "123"
       Ports		      [4, 1]
-      Position		      [800, 698, 960, 797]
+      Position		      [865, 698, 1025, 797]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2161,7 +2172,7 @@ Model {
       Name		      "PackHeartBeat"
       SID		      "109"
       Ports		      [2, 1]
-      Position		      [800, 576, 960, 674]
+      Position		      [865, 576, 1025, 674]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2196,7 +2207,7 @@ Model {
       Name		      "PackRawIMU"
       SID		      "108"
       Ports		      [4, 1]
-      Position		      [800, 410, 960, 545]
+      Position		      [865, 410, 1025, 545]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2242,18 +2253,9 @@ Model {
       BlockType		      Constant
       Name		      "SYS_ID"
       SID		      "78"
-      Position		      [460, 410, 490, 440]
+      Position		      [605, 410, 635, 440]
       ZOrder		      -4
       Value		      "101"
-      OutDataTypeStr	      "uint8"
-    }
-    Block {
-      BlockType		      Constant
-      Name		      "SampleTime"
-      SID		      "86"
-      Position		      [80, 320, 110, 350]
-      ZOrder		      -4
-      Value		      "T"
       OutDataTypeStr	      "uint8"
     }
     Block {
@@ -2726,26 +2728,11 @@ Model {
       }
     }
     Block {
-      BlockType		      Sum
-      Name		      "Sum"
-      SID		      "87"
-      Ports		      [2, 1]
-      Position		      [290, 255, 310, 275]
-      ZOrder		      -18
-      ShowName		      off
-      IconShape		      "round"
-      Inputs		      "|++"
-      InputSameDT	      off
-      OutDataTypeStr	      "Inherit: Inherit via internal rule"
-      SaturateOnIntegerOverflow	off
-      SampleTime	      "T"
-    }
-    Block {
       BlockType		      Reference
       Name		      "TX_N_Data"
       SID		      "115"
       Ports		      [1]
-      Position		      [1005, 412, 1165, 548]
+      Position		      [1070, 412, 1230, 548]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2773,7 +2760,7 @@ Model {
       Name		      "TX_N_Data1"
       SID		      "116"
       Ports		      [1]
-      Position		      [1005, 576, 1165, 674]
+      Position		      [1070, 576, 1230, 674]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2801,7 +2788,7 @@ Model {
       Name		      "TX_N_Data2"
       SID		      "124"
       Ports		      [1]
-      Position		      [1005, 701, 1165, 799]
+      Position		      [1070, 701, 1230, 799]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
@@ -2943,6 +2930,18 @@ Model {
     }
     Block {
       BlockType		      DataStoreWrite
+      Name		      "Update MPU_T"
+      SID		      "133"
+      Ports		      [1]
+      Position		      [255, 697, 315, 723]
+      ZOrder		      -6
+      BackgroundColor	      "orange"
+      ShowName		      off
+      DataStoreName	      "MPU_T"
+      DataStoreElements	      "MPU_T"
+    }
+    Block {
+      BlockType		      DataStoreWrite
       Name		      "Update Raw IMU DATA"
       SID		      "74"
       Ports		      [9]
@@ -2958,7 +2957,7 @@ Model {
       Name		      "Update time"
       SID		      "83"
       Ports		      [1]
-      Position		      [355, 251, 485, 279]
+      Position		      [335, 261, 465, 289]
       ZOrder		      -6
       BackgroundColor	      "orange"
       DataStoreName	      "time_since_boot_usec"
@@ -2968,7 +2967,7 @@ Model {
       BlockType		      DataStoreMemory
       Name		      "mlGpsData"
       SID		      "117"
-      Position		      [40, 524, 150, 549]
+      Position		      [40, 559, 150, 584]
       ZOrder		      -4
       BackgroundColor	      "lightBlue"
       DataStoreName	      "mlGpsData"
@@ -2982,7 +2981,7 @@ Model {
       BlockType		      DataStoreMemory
       Name		      "mlRawIMU"
       SID		      "71"
-      Position		      [40, 483, 149, 507]
+      Position		      [40, 518, 149, 542]
       ZOrder		      -4
       BackgroundColor	      "lightBlue"
       DataStoreName	      "mlRawIMU"
@@ -3140,34 +3139,15 @@ Model {
       DstPort		      1
     }
     Line {
-      SrcBlock		      "SampleTime"
+      SrcBlock		      "Counter\nFree-Running"
       SrcPort		      1
       DstBlock		      "Gain"
       DstPort		      1
     }
     Line {
-      SrcBlock		      "Get time1"
-      SrcPort		      1
-      DstBlock		      "Sum"
-      DstPort		      1
-    }
-    Line {
-      SrcBlock		      "Gain"
-      SrcPort		      1
-      Points		      [65, 0]
-      DstBlock		      "Sum"
-      DstPort		      2
-    }
-    Line {
-      SrcBlock		      "Sum"
-      SrcPort		      1
-      DstBlock		      "Update time"
-      DstPort		      1
-    }
-    Line {
       SrcBlock		      "SYS_ID"
       SrcPort		      1
-      Points		      [250, 0]
+      Points		      [170, 0]
       Branch {
 	DstBlock		"PackRawIMU"
 	DstPort			1
@@ -3279,10 +3259,30 @@ Model {
       DstPort		      3
     }
     Line {
-      SrcBlock		      "Get time2"
+      SrcBlock		      "Get time1"
       SrcPort		      1
       DstBlock		      "PackGpsRawInt"
       DstPort		      4
+    }
+    Line {
+      Name		      "U1 CH4"
+      Labels		      [0, 0]
+      SrcBlock		      "BUS SPI\nRead MPU 6050\nAxyz, T°, Gxyz\n(1 kHz)"
+      SrcPort		      2
+      DstBlock		      "Update MPU_T"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Gain"
+      SrcPort		      1
+      DstBlock		      "Data Type Conversion6"
+      DstPort		      1
+    }
+    Line {
+      SrcBlock		      "Data Type Conversion6"
+      SrcPort		      1
+      DstBlock		      "Update time"
+      DstPort		      1
     }
   }
 }
