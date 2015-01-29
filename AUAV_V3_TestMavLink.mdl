@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.90"
+    ComputedModelVersion    "1.91"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,9 +31,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "UglyRed"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jan 09 23:54:56 2015"
+  LastModifiedDate	  "Sat Jan 10 00:43:56 2015"
   RTWModifiedTimeStamp	  342744436
-  ModelVersionFormat	  "1.%<AutoIncrement:90>"
+  ModelVersionFormat	  "1.%<AutoIncrement:91>"
   ConfigurationManager	  "none"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -937,16 +937,6 @@ Model {
       BusSelectionMode	      off
     }
     Block {
-      BlockType		      ForIterator
-      ResetStates	      "held"
-      IterationSource	      "internal"
-      IterationLimit	      "5"
-      ExternalIncrement	      off
-      ShowIterationPort	      on
-      IndexMode		      "One-based"
-      IterationVariableDataType	"int32"
-    }
-    Block {
       BlockType		      Gain
       Gain		      "1"
       Multiplication	      "Element-wise(K.*u)"
@@ -1047,7 +1037,7 @@ Model {
   }
   System {
     Name		    "AUAV_V3_TestMavLink"
-    Location		    [336, 126, 1473, 597]
+    Location		    [336, 126, 1458, 875]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -1061,7 +1051,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "115"
+    SIDHighWatermark	    "116"
     Block {
       BlockType		      Reference
       Name		      "BUS I2C\nInitialize HMC5883\nre-initialize at 0.5Hz"
@@ -1302,7 +1292,7 @@ Model {
       BlockType		      DataStoreMemory
       Name		      "Data Store2"
       SID		      "80"
-      Position		      [45, 743, 155, 768]
+      Position		      [45, 688, 155, 713]
       ZOrder		      -4
       BackgroundColor	      "lightBlue"
       DataStoreName	      "time_since_boot_usec"
@@ -1696,125 +1686,6 @@ Model {
       BackgroundColor	      "orange"
       DataStoreName	      "time_since_boot_usec"
       DataStoreElements	      "time_since_boot_usec"
-    }
-    Block {
-      BlockType		      SubSystem
-      Name		      "HeartBeatSender"
-      SID		      "110"
-      Ports		      [1]
-      Position		      [945, 604, 1085, 646]
-      ZOrder		      -10
-      TreatAsAtomicUnit	      on
-      MinAlgLoopOccurrences   off
-      PropExecContextOutsideSubsystem off
-      RTWSystemCode	      "Auto"
-      FunctionWithSeparateData off
-      Opaque		      off
-      RequestExecContextInheritance off
-      MaskHideContents	      off
-      System {
-	Name			"HeartBeatSender"
-	Location		[434, 234, 932, 534]
-	Open			off
-	ModelBrowserVisibility	on
-	ModelBrowserWidth	200
-	ScreenColor		"white"
-	PaperOrientation	"landscape"
-	PaperPositionMode	"auto"
-	PaperType		"usletter"
-	PaperUnits		"inches"
-	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
-	TiledPageScale		1
-	ShowPageBoundaries	off
-	ZoomFactor		"100"
-	Block {
-	  BlockType		  Inport
-	  Name			  "Bytes2Send"
-	  SID			  "111"
-	  Position		  [25, 33, 55, 47]
-	  ZOrder		  -1
-	  IconDisplay		  "Port number"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "C Function Call"
-	  SID			  "112"
-	  Ports			  [1, 1]
-	  Position		  [95, 161, 255, 219]
-	  LibraryVersion	  "3.36"
-	  SourceBlock		  "MCHP_Blockset/User Functions/C Function Call"
-	  SourceType		  "C Function Call"
-	  ParseFilesChkbx	  on
-	  ListFunctions1	  "Custom Function"
-	  Function1		  "uint8_t GetCharAtBuffIdx(int32_t idx)"
-	  AddHeaderDeclaration	  on
-	  Function1Type		  "when block is updated (default)"
-	  Fct1BlockIn		  "idx"
-	  FctReturnBlockOut	  on
-	  DataCollected		  "s.chksm={ '514109-Jan-2015 22:49:09'};s.File1=reshape({ '  uint16_t  PackHeartBeat(void)','  uint"
-	  "16_t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  c"
-	  "har  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)',' "
-	  " uint8_t  GetCharAtBuffIdx(int32_t idx)'},1,4);"
-	  ORDERING		  "None"
-	  SampleTime		  "-1"
-	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
-	  PinDigitalInput	  "[]"
-	  PinDigitalOutput	  "[]   "
-	  PinAnalogInput	  "[]"
-	  Port {
-	    PortNumber		    1
-	    Name		    "U1 Tx"
-	    RTWStorageClass	    "Auto"
-	    DataLoggingNameMode	    "SignalName"
-	  }
-	}
-	Block {
-	  BlockType		  ForIterator
-	  Name			  "For Iterator"
-	  SID			  "113"
-	  Ports			  [1, 1]
-	  Position		  [80, 25, 170, 55]
-	  ZOrder		  -2
-	  IterationSource	  "external"
-	  IndexMode		  "Zero-based"
-	}
-	Block {
-	  BlockType		  Reference
-	  Name			  "UART Tx"
-	  SID			  "114"
-	  Ports			  [1]
-	  Position		  [305, 172, 390, 208]
-	  LibraryVersion	  "3.36"
-	  SourceBlock		  "MCHP_Blockset/BUS UART/UART Tx"
-	  SourceType		  "UART Tx Output Driver"
-	  UART_REF		  "1"
-	  UART_String		  off
-	  ORDERING		  "None"
-	  SampleTime		  "-1 "
-	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
-	}
-	Line {
-	  SrcBlock		  "For Iterator"
-	  SrcPort		  1
-	  Points		  [0, 65; -95, 0]
-	  DstBlock		  "C Function Call"
-	  DstPort		  1
-	}
-	Line {
-	  Name			  "U1 Tx"
-	  Labels		  [0, 0]
-	  SrcBlock		  "C Function Call"
-	  SrcPort		  1
-	  DstBlock		  "UART Tx"
-	  DstPort		  1
-	}
-	Line {
-	  SrcBlock		  "Bytes2Send"
-	  SrcPort		  1
-	  DstBlock		  "For Iterator"
-	  DstPort		  1
-	}
-      }
     }
     Block {
       BlockType		      Reference
@@ -2260,14 +2131,19 @@ Model {
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
       SourceType	      "C Function Call"
-      ParseFilesChkbx	      off
+      ParseFilesChkbx	      on
       ListFunctions1	      "Custom Function"
-      Function1		      "uint8_t PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,ui"
-      "nt32_t time_usec)"
+      Function1		      "uint16_t PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,u"
+      "int32_t time_usec)"
       AddHeaderDeclaration    on
       Function1Type	      "when block is updated (default)"
       Fct1BlockIn	      "system_id  , component_id  , mlRawIMUData  , time_usec"
       FctReturnBlockOut	      on
+      DataCollected	      "s.chksm={ '452509-Jan-2015 23:52:22'};s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t "
+      "system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t"
+      "  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  ch"
+      "ar  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)',"
+      "'  uint8_t  GetCharAtBuffIdx(int32_t idx)','  void  TxN_Data_OverU1(uint16_t N)'},1,6);"
       ORDERING		      "None"
       SampleTime	      "0.02"
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
@@ -2814,6 +2690,34 @@ Model {
     }
     Block {
       BlockType		      Reference
+      Name		      "TX_N_Data1"
+      SID		      "116"
+      Ports		      [1]
+      Position		      [905, 576, 1065, 674]
+      LibraryVersion	      "3.36"
+      SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
+      SourceType	      "C Function Call"
+      ParseFilesChkbx	      on
+      ListFunctions1	      "Custom Function"
+      Function1		      "void TxN_Data_OverU1(uint16_t N)"
+      AddHeaderDeclaration    on
+      Function1Type	      "when block is updated (default)"
+      Fct1BlockIn	      "N"
+      FctReturnBlockOut	      on
+      DataCollected	      "s.chksm={ '452509-Jan-2015 23:52:22'};s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t "
+      "system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t"
+      "  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  ch"
+      "ar  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)',"
+      "'  uint8_t  GetCharAtBuffIdx(int32_t idx)','  void  TxN_Data_OverU1(uint16_t N)'},1,6);"
+      ORDERING		      "None"
+      SampleTime	      "-1"
+      MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+      PinDigitalInput	      "[]"
+      PinDigitalOutput	      "[]   "
+      PinAnalogInput	      "[]"
+    }
+    Block {
+      BlockType		      Reference
       Name		      "Timer Info"
       SID		      "62"
       Ports		      []
@@ -2912,15 +2816,9 @@ Model {
       Labels		      [0, 1]
       SrcBlock		      "Demux1"
       SrcPort		      3
-      Points		      [55, 0]
-      Branch {
-	Points			[80, 0]
-      }
-      Branch {
-	Points			[0, 185]
-	DstBlock		"Data Type Conversion2"
-	DstPort			1
-      }
+      Points		      [55, 0; 0, 185]
+      DstBlock		      "Data Type Conversion2"
+      DstPort		      1
     }
     Line {
       Name		      "U1 CH1"
@@ -2928,80 +2826,44 @@ Model {
       SrcBlock		      "Demux1"
       SrcPort		      1
       Points		      [75, 0]
-      Branch {
-	Points			[60, 0]
-      }
-      Branch {
-	DstBlock		"Data Type Conversion"
-	DstPort			1
-      }
+      DstBlock		      "Data Type Conversion"
+      DstPort		      1
     }
     Line {
       Name		      "U1 CH2"
       Labels		      [0, 1]
       SrcBlock		      "Demux1"
       SrcPort		      2
-      Points		      [65, 0]
-      Branch {
-	Points			[70, 0]
-      }
-      Branch {
-	Points			[0, 190]
-	DstBlock		"Data Type Conversion1"
-	DstPort			1
-      }
+      Points		      [65, 0; 0, 190]
+      DstBlock		      "Data Type Conversion1"
+      DstPort		      1
     }
     Line {
       Name		      "U1 CH5"
       Labels		      [0, 0]
       SrcBlock		      "Demux2"
       SrcPort		      1
-      Points		      [45, 0]
-      Branch {
-	Points			[90, 0]
-      }
-      Branch {
-	Points			[0, 155]
-	DstBlock		"Data Type Conversion3"
-	DstPort			1
-      }
+      Points		      [45, 0; 0, 155]
+      DstBlock		      "Data Type Conversion3"
+      DstPort		      1
     }
     Line {
       Name		      "U1 CH6"
       Labels		      [0, 0]
       SrcBlock		      "Demux2"
       SrcPort		      2
-      Points		      [35, 0]
-      Branch {
-	Points			[100, 0]
-      }
-      Branch {
-	Points			[0, 150]
-	DstBlock		"Data Type Conversion4"
-	DstPort			1
-      }
+      Points		      [35, 0; 0, 150]
+      DstBlock		      "Data Type Conversion4"
+      DstPort		      1
     }
     Line {
       Name		      "U1 CH7"
       Labels		      [0, 0]
       SrcBlock		      "Demux2"
       SrcPort		      3
-      Points		      [25, 0]
-      Branch {
-	Points			[110, 0]
-      }
-      Branch {
-	Points			[0, 145]
-	DstBlock		"Data Type Conversion5"
-	DstPort			1
-      }
-    }
-    Line {
-      Name		      "U1 CH4"
-      Labels		      [0, 0]
-      SrcBlock		      "BUS SPI\nRead MPU 6050\nAxyz, T°, Gxyz\n(1 kHz)"
-      SrcPort		      2
-      Points		      [195, 0]
+      Points		      [25, 0; 0, 145]
+      DstBlock		      "Data Type Conversion5"
+      DstPort		      1
     }
     Line {
       SrcBlock		      "BUS I2C\nRead HMC5883\nMagn\n(50 Hz)"
@@ -3050,45 +2912,27 @@ Model {
       Labels		      [0, 0]
       SrcBlock		      "Subsystem9"
       SrcPort		      1
-      Points		      [25, 0]
-      Branch {
-	Points			[25, 0]
-      }
-      Branch {
-	Points			[0, -130]
-	DstBlock		"Update Raw IMU DATA"
-	DstPort			8
-      }
+      Points		      [25, 0; 0, -130]
+      DstBlock		      "Update Raw IMU DATA"
+      DstPort		      8
     }
     Line {
       Name		      "U1 CH8"
       Labels		      [0, 0]
       SrcBlock		      "Subsystem8"
       SrcPort		      1
-      Points		      [10, 0]
-      Branch {
-	Points			[40, 0]
-      }
-      Branch {
-	Points			[0, -100]
-	DstBlock		"Update Raw IMU DATA"
-	DstPort			7
-      }
+      Points		      [10, 0; 0, -100]
+      DstBlock		      "Update Raw IMU DATA"
+      DstPort		      7
     }
     Line {
       Name		      "U1 CH10"
       Labels		      [0, 0]
       SrcBlock		      "Subsystem10"
       SrcPort		      1
-      Points		      [20, 0]
-      Branch {
-	Points			[30, 0]
-      }
-      Branch {
-	Points			[20, 0; 0, -160]
-	DstBlock		"Update Raw IMU DATA"
-	DstPort			9
-      }
+      Points		      [40, 0; 0, -160]
+      DstBlock		      "Update Raw IMU DATA"
+      DstPort		      9
     }
     Line {
       SrcBlock		      "Input Capture\nRC Receiver"
@@ -3212,7 +3056,7 @@ Model {
     Line {
       SrcBlock		      "PackHeartBeat"
       SrcPort		      1
-      DstBlock		      "HeartBeatSender"
+      DstBlock		      "TX_N_Data1"
       DstPort		      1
     }
   }
