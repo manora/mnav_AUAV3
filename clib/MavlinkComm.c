@@ -1,9 +1,12 @@
 #include "mavlink.h"
 #include "MavlinkComm.h"
+#include "circBuffer.h"
 #include "inttypes.h"
+#include "gpsPort.h"
 #include <stdio.h>
 #include "AUAV_V3_TestMavlink.h"
 uint8_t UartOutBuff[MAVLINK_MAX_PACKET_LEN];
+
 
 
 uint16_t PackHeartBeat(uint8_t system_id, uint8_t component_id){

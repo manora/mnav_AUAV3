@@ -40,14 +40,14 @@ THE SOFTWARE.
 // ==============================================================
 #include "AUAV_V3_TestMavLink.h"
 #include "gpsUblox.h"
-
+#include "circBuffer.h"
 
 // this function converts one hex ascii character to decimal
 // used for the checksum comparison
 // Kindly contributed by: Bryant Mairs
-extern MCHP_UART4_RxStr MCHP_UART4_Rx;
+extern CBRef uartBuffer;
 extern mavlink_gps_raw_int_t mlGpsData;
-//extern mavlink_gps_date_time_t mlGpsDateTime;
+
 char hex2char(char halfhex) {
     char rv;
 
@@ -70,39 +70,7 @@ float degMinToDeg(unsigned char degrees, float minutes) {
     return ((float) degrees + minutes / 60.0);
 }
 
-//Get the number of bytes held in the circ buff
-unsigned int getLength (void){
-	// if the circular buffer is not null
 
-		if (MCHP_UART4_Rx.head <= MCHP_UART4_Rx.tail){
-			return (MCHP_UART4_Rx.tail-MCHP_UART4_Rx.head);
-		} else{
-			return (Rx_BUFF_SIZE_Uart4 + MCHP_UART4_Rx.tail - MCHP_UART4_Rx.head);
-		}
-}
-// returns the byte (actual value) that the head points to. this
-// does not mark the byte as read, so succesive calls to peak will
-// always return the same value
-unsigned char peak(void){
-  // if there are bytes in the buffer
-  if (getLength() > 0){
-    return MCHP_UART4_Rx.buffer[MCHP_UART4_Rx.head ];
-  }
-  return 128;
-}
-// returns the front of the circular buffer and marks the byte as read
-unsigned char readFront (void){
-	// if the circular buffer is not null
-		char retVal;
-		// if there are bytes in the buffer
-		if (getLength() > 0){
-			retVal = MCHP_UART4_Rx.buffer[MCHP_UART4_Rx.head ];
-			MCHP_UART4_Rx.head = MCHP_UART4_Rx.head < (Rx_BUFF_SIZE_Uart4 -1)? MCHP_UART4_Rx.head+1: 0;
-			return retVal;
-		}
-		return 128;
-
-}
 // this function reads the serial stream as it comes in
 // then assembles full messages, verifies the checksum and
 // if valid sends it out to the parser
@@ -120,26 +88,26 @@ unsigned char gpsUbloxSeparate(unsigned char* outStream) {
     unsigned char isValid = 0;
     unsigned char chksumHeader = 0;
     unsigned char tmpIndex = 0;
-    unsigned char tmpLen = getLength();
+    unsigned char tmpLen = getLength(uartBuffer);
 
     // If the previous message was complete, then
     // go over the buffer and advance until you find a dollar sign
     if (previousComplete) {
-        while (tmpLen > 0 && peak() != '$') {
-            readFront();
+        while (tmpLen > 0 && peak(uartBuffer) != '$') {
+            readFront(uartBuffer);
             tmpLen--;
         }
     }
 
     // read until you find a CR or run out of bytes to read
-    while (tmpLen > 0 && peak() != 13) { //CR = 13
-        outBuf[indexLast] = readFront();
+    while (tmpLen > 0 && peak(uartBuffer) != 13) { //CR = 13
+        outBuf[indexLast] = readFront(uartBuffer);
         indexLast++;
         tmpLen--;
     }
 
     // if we found a carriage return, then the message is complete
-    if (peak() == 13) {
+    if (peak(uartBuffer) == 13) {
         // validate the checksum
         chsmStr_0 = hex2char(outBuf[indexLast - 2]);
         chsmStr_1 = hex2char(outBuf[indexLast - 1]);

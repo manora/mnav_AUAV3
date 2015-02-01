@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.102"
+    ComputedModelVersion    "1.104"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -31,9 +31,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "UglyRed"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Jan 30 00:51:14 2015"
-  RTWModifiedTimeStamp	  344479856
-  ModelVersionFormat	  "1.%<AutoIncrement:102>"
+  LastModifiedDate	  "Mon Feb 02 00:51:40 2015"
+  RTWModifiedTimeStamp	  344736844
+  ModelVersionFormat	  "1.%<AutoIncrement:104>"
   ConfigurationManager	  "none"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -423,8 +423,10 @@ Model {
 	  ConfigAtBuild		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
+	  CustomSourceCode	  "#include \"gpsPort.h\""
 	  CustomInclude		  "mavlink\\include\\common\\\nclib\\"
-	  CustomSource		  "clib\\MavlinkComm.c\nclib\\gpsUblox.c"
+	  CustomSource		  "clib\\MavlinkComm.c\nclib\\gpsUblox.c\nclib\\circBuffer.c\nclib\\gpsPort.c"
+	  CustomInitializer	  "uartBufferInit();"
 	  IncludeHyperlinkInReport on
 	  LaunchReport		  on
 	  TargetLang		  "C"
@@ -823,7 +825,7 @@ Model {
       Name		      "Configuration"
       ExtraOptions	      "-aGenerateTraceInfo=1 -aIgnoreTestpoints=0 "
       CurrentDlgPage	      "Code Generation/Custom Code"
-      ConfigPrmDlgPosition     [ 400, 125, 1281, 863 ] 
+      ConfigPrmDlgPosition     [ 376, 35, 1305, 887 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -1021,7 +1023,7 @@ Model {
   }
   System {
     Name		    "AUAV_V3_TestMavLink"
-    Location		    [265, 82, 1538, 796]
+    Location		    [265, 82, 1473, 788]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -2908,14 +2910,14 @@ Model {
       PIN_CTS_TXT	      "A0 / P16 / Pin[17]"
       PIN_RTS		      "Dynamic Options"
       PIN_RTS_TXT	      "D0 / P64 / Pin[72]"
-      MCHP_PORT		      "{UART4  Rx}{U4RX}3:0:P86;{UART4  Tx}{U4TX}3:1:P85;"
+      MCHP_PORT		      "{UART4  Tx}{U4TX}3:1:P85;"
       TX_IMPLEMENTATION	      "Circular Buffer"
       TX_INT_PRIORITY	      "1"
       TX_INT_WHEN	      "is empty & last char is sent"
       TX_CIRCULAR_SIZE	      "128"
       TX_DMA_CHANNEL	      "0   (Lowest Priority)"
       TX_DMA_SIZE	      "[]"
-      RX_IMPLEMENTATION	      "Circular Buffer"
+      RX_IMPLEMENTATION	      "Do not implement Rx"
       RX_INT_PRIORITY	      "1"
       RX_INT_WHEN	      "receive 1 character"
       RX_CIRCULAR_SIZE	      "128"
