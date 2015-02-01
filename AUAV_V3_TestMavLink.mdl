@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.104"
+    ComputedModelVersion    "1.106"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -14,7 +14,7 @@ Model {
   "hip.com/SimulinkBlocks]\nAuthor: Lubin Kerhuel\n\nGet AGM sensors raw values from the UAV V3 board from Asrovtech. ["
   "http://arsovtech.com/?p=1414]\n"
   SavedCharacterEncoding  "windows-1252"
-  PreLoadFcn		  "T = 0.005;\nMavlinkBus;"
+  PreLoadFcn		  "T = 0.001;\nMavlinkBus;"
   SaveDefaultBlockParams  on
   ScopeRefreshTime	  0.035000
   OverrideScopeRefreshTime on
@@ -31,9 +31,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "UglyRed"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Feb 02 00:51:40 2015"
-  RTWModifiedTimeStamp	  344736844
-  ModelVersionFormat	  "1.%<AutoIncrement:104>"
+  LastModifiedDate	  "Mon Feb 02 01:57:05 2015"
+  RTWModifiedTimeStamp	  344742876
+  ModelVersionFormat	  "1.%<AutoIncrement:106>"
   ConfigurationManager	  "none"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -790,7 +790,7 @@ Model {
 	      CustomProperty {
 		DataType		"string"
 		Name			"TIMER_PERIOD"
-		Value			"[43749]"
+		Value			"[8749]"
 	      }
 	      CustomProperty {
 		DataType		"string"
@@ -800,7 +800,7 @@ Model {
 	      CustomProperty {
 		DataType		"string"
 		Name			"MCHP_CompiledTime_ModelSampleTimes_Txt"
-		Value			"s(1).Value=reshape([0.005 0],1,2);s(1).Description='Discrete 1';s(1).ColorRGBValue=reshape([0.9 0 0],1,3);s"
+		Value			"s(1).Value=reshape([0.001 0],1,2);s(1).Description='Discrete 1';s(1).ColorRGBValue=reshape([0.9 0 0],1,3);s"
 		"(1).Annotation='D1';s(1).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(2).Value=reshape([0.02 0],1,2);s(2).Descrip"
 		"tion='Discrete 2';s(2).ColorRGBValue=reshape([0 0.82 0],1,3);s(2).Annotation='D2';s(2).OwnerBlock=reshape(MCHP_FunHe"
 		"x2num('[]'),0,0);s(3).Value=reshape([0.05 0],1,2);s(3).Description='Discrete 3';s(3).ColorRGBValue=reshape([0 0 0.8]"
@@ -824,8 +824,8 @@ Model {
       }
       Name		      "Configuration"
       ExtraOptions	      "-aGenerateTraceInfo=1 -aIgnoreTestpoints=0 "
-      CurrentDlgPage	      "Code Generation/Custom Code"
-      ConfigPrmDlgPosition     [ 376, 35, 1305, 887 ] 
+      CurrentDlgPage	      "Solver"
+      ConfigPrmDlgPosition     [ 368, 5, 1313, 895 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -1037,7 +1037,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "133"
+    SIDHighWatermark	    "135"
     Block {
       BlockType		      Reference
       Name		      " gpsUbloxParse"
@@ -1134,9 +1134,9 @@ Model {
     Block {
       BlockType		      Reference
       Name		      "BUS SPI\nInitialize MPU 6000\nOnce at Startup"
-      SID		      "14"
+      SID		      "135"
       Ports		      []
-      Position		      [720, 102, 790, 132]
+      Position		      [705, 102, 775, 132]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/BUS SPI/BUS SPI"
       SourceType	      "SPI Driver"
@@ -1146,31 +1146,27 @@ Model {
       SPIsequence_txt	      "Initial-Configuration$     ---     $Set Port E4 / Pin[100] to 1    % /CS$Delay of 0.01(s)"
       "$Set Port E4 / Pin[100] to 0    % /CS$Write only (x1)  Write:{[0x6B80]}      % PWR_MGMT_1, BIT_H_RESET$Set Port "
       "E4 / Pin[100] to 1    % /CS$Delay of 0.06(s)$Set Port E4 / Pin[100] to 0    % /CS$Write only (x1)  Write:{[0x6B0"
-      "3]}      % PWR_MGMT_1, MPU_CLK_SEL_PLLGYROZ - PLL with Y axis gyroscope reference$Set Port E4 / Pin[100] to 1   "
+      "1]}      % PWR_MGMT_1, MPU_CLK_SEL_PLLGYROZ - PLL with X axis gyroscope reference$Set Port E4 / Pin[100] to 1   "
       " % /CS$Delay of 0.01(s)$Set Port E4 / Pin[100] to 0    % /CS$Write only (x1)  Write:{[0x6A10]}      % conf Pow M"
-      "ngt 1$Set Port E4 / Pin[100] to 1    % /CS$Set Port E4 / Pin[100] to 0    % /CS$Write only (x1)  Write:{[0x1904]"
-      "}      % Sample rate = 200Hz  Fsample= 1Khz/(N+1) = 200Hz$Set Port E4 / Pin[100] to 1$Set Port E4 / Pin[100] to "
-      "0$Write only (x1)  Write:{[0x1A03]}      % LPF - Gyro 42Hz 4.8mS delay - Accel 44Hz 4.9mS delay$Set Port E4 / Pi"
-      "n[100] to 1$Set Port E4 / Pin[100] to 0$Write only (x1)  Write:{[0x1B08]}      % Gyro scale 500º/s$Set Port E4 /"
-      " Pin[100] to 1$Set Port E4 / Pin[100] to 0$Write only (x1)  Write:{[0x3709]}      % INT_PIN_CFG, BIT_INT_LEVEL |"
-      " BIT_INT_RD_CLEAR$Set Port E4 / Pin[100] to 1$Set Port E4 / Pin[100] to 0$Write only (x1)  Write:{[0x3801]}     "
-      " % INT: Raw data ready$Set Port E4 / Pin[100] to 1"
+      "ngt 1$Set Port E4 / Pin[100] to 1    % /CS$Delay of 0.01(s)$Set Port E4 / Pin[100] to 0    % /CS$Write only (x1)"
+      "  Write:{[0x1904]}      % Sample rate = 200Hz  Fsample= 1Khz/(N+1) = 200Hz$Set Port E4 / Pin[100] to 1    % /CS$"
+      "Delay of 0.01(s)$Set Port E4 / Pin[100] to 0    % /CS$Write only (x1)  Write:{[0x1A03]}      % LPF - Gyro 42Hz 4"
+      ".8mS delay - Accel 44Hz 4.9mS delay$Set Port E4 / Pin[100] to 1    % /CS$Delay of 0.01(s)$Set Port E4 / Pin[100]"
+      " to 0$Write only (x1)  Write:{[0x1B08]}      % Gyro scale 500º/s$Set Port E4 / Pin[100] to 1"
       SPIsequence_num	      "[BFF0000000000000 4091D00000000000 0000000000000000 40E0000000000000 4116409C00000000 411"
       "6409D55555555]$[4070000000000000]$[4010000000000000 4051000000000000 3FF0000000000000]$[4020000000000000 3F847AE"
       "147AE147B]$[4010000000000000 4051000000000000 0000000000000000]$[3FF0000000000000 3FF0000000000000 0000000000000"
       "000 40DAE00000000000]$[4010000000000000 4051000000000000 3FF0000000000000]$[4020000000000000 3FAEB851EB851EB8]$["
-      "4010000000000000 4051000000000000 0000000000000000]$[3FF0000000000000 3FF0000000000000 0000000000000000 40DAC0C0"
+      "4010000000000000 4051000000000000 0000000000000000]$[3FF0000000000000 3FF0000000000000 0000000000000000 40DAC040"
       "00000000]$[4010000000000000 4051000000000000 3FF0000000000000]$[4020000000000000 3F847AE147AE147B]$[401000000000"
       "0000 4051000000000000 0000000000000000]$[3FF0000000000000 3FF0000000000000 0000000000000000 40DA840000000000]$[4"
-      "010000000000000 4051000000000000 3FF0000000000000]$[4010000000000000 4051000000000000 0000000000000000]$[3FF0000"
-      "000000000 3FF0000000000000 0000000000000000 40B9040000000000]$[4010000000000000 4051000000000000 3FF000000000000"
-      "0]$[4010000000000000 4051000000000000 0000000000000000]$[3FF0000000000000 3FF0000000000000 0000000000000000 40BA"
-      "030000000000]$[4010000000000000 4051000000000000 3FF0000000000000]$[4010000000000000 4051000000000000 0000000000"
-      "000000]$[3FF0000000000000 3FF0000000000000 0000000000000000 40BB080000000000]$[4010000000000000 4051000000000000"
-      " 3FF0000000000000]$[4010000000000000 4051000000000000 0000000000000000]$[3FF0000000000000 3FF0000000000000 00000"
-      "00000000000 40CB848000000000]$[4010000000000000 4051000000000000 3FF0000000000000]$[4010000000000000 40510000000"
-      "00000 0000000000000000]$[3FF0000000000000 3FF0000000000000 0000000000000000 40CC008000000000]$[4010000000000000 "
-      "4051000000000000 3FF0000000000000]"
+      "010000000000000 4051000000000000 3FF0000000000000]$[4020000000000000 3F847AE147AE147B]$[4010000000000000 4051000"
+      "000000000 0000000000000000]$[3FF0000000000000 3FF0000000000000 0000000000000000 40B9040000000000]$[4010000000000"
+      "000 4051000000000000 3FF0000000000000]$[4020000000000000 3F847AE147AE147B]$[4010000000000000 4051000000000000 00"
+      "00000000000000]$[3FF0000000000000 3FF0000000000000 0000000000000000 40BA030000000000]$[4010000000000000 40510000"
+      "00000000 3FF0000000000000]$[4020000000000000 3F847AE147AE147B]$[4010000000000000 4051000000000000 00000000000000"
+      "00]$[3FF0000000000000 3FF0000000000000 0000000000000000 40BB080000000000]$[4010000000000000 4051000000000000 3FF"
+      "0000000000000]"
       PIN_SDI_TXT	      "E3 / P83 / Pin[99]"
       PIN_SDO_TXT	      "E2 / P82 / Pin[98]"
       PIN_SCK_TXT	      "G15 / P127 / Pin[1]"
@@ -1187,17 +1183,15 @@ Model {
       "2:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SP"
       "I1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital ou"
       "tput}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Di"
-      "gital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{"
-      "SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}1"
-      "2:1:E4;"
+      "gital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;"
       ORDERING		      "0"
     }
     Block {
       BlockType		      Reference
       Name		      "BUS SPI\nRead MPU 6050\nAxyz, T°, Gxyz\n(1 kHz)"
-      SID		      "15"
+      SID		      "134"
       Ports		      [0, 3]
-      Position		      [40, 636, 185, 784]
+      Position		      [35, 636, 180, 784]
       LibraryVersion	      "3.36"
       SourceBlock	      "MCHP_Blockset/BUS SPI/BUS SPI"
       SourceType	      "SPI Driver"
@@ -1220,7 +1214,7 @@ Model {
       S_INPUT_Size	      "[2  2]"
       S_OUTPUT_Size	      "[4]"
       BlockingMode	      off
-      SampleTime	      "T"
+      SampleTime	      "[.001]"
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
       MCHP_PORT		      "{SPI 1 input}{SDI1}12:0:P83;{SPI 1 output}{SDO1}12:1:P82;{SPI 1 Clock output}{SCK1}12:1:P127;{"
       "SPI 1 Digital output}{SPI1-DOU}12:1:E4;{SPI 1 Digital output}{SPI1-DOU}12:1:E4;"
@@ -1795,7 +1789,7 @@ Model {
       SourceBlock	      "MCHP_Blockset/System Configuration/Microchip Master"
       SourceType	      ""
       PICREF		      "33EP512MU810"
-      TIMESTEP_REF	      "Timer  ( 0.005s )"
+      TIMESTEP_REF	      "Timer  ( 0.001s )"
       BUSYFLAG		      "Dynamic Options"
       BUSYFLAG_TXT	      "A6 / Pin[91]"
       PWRTEN		      "PWRT enabled"
@@ -1929,8 +1923,8 @@ Model {
       ALTADREF		      "AVREF+/AVREF- are mapped to RA9/RA10"
       ALTCVREF		      "CVREF+/CVREF- are mapped to RA9/RA10"
       PWMLOCK		      "PWM registers may be written without key sequence"
-      MCHP_TIMER_REQUEST      "{Time Step}{TS}0:2:3:1:[]:350000;"
-      MCHP_TIMER_RESULT	      "[1 43748.999999999949 ]"
+      MCHP_TIMER_REQUEST      "{Time Step}{TS}0:2:3:1:[]:70000;"
+      MCHP_TIMER_RESULT	      "[1 8748.9999999999927 ]"
       MCHP_PORT		      "{Busy Flag}{Busy}0:1:A6;"
       MCHP_PLLRegisters	      "[5    243  16385     -1]"
       MCHPVAR		      "MCHP.id = '33EP512MU810';MCHP.idN = [33  512  810];MCHP.idL = {'EP','MU',''};MCHP.Arch =3;MCHP.R"
@@ -1999,7 +1993,7 @@ Model {
       "UART.port_RTS = [32767  32767  32767  32767     -1     -1];MCHP.UART.port_CTS = [32767  32767  32767  32767     "
       "-1     -1];MCHP.UART.reg_UxMODE = [48127  48127  48127  48127     -1     -1];MCHP.UART.reg_UxSTA = [61439  61439"
       "  61439  61439     -1     -1];"
-      MCHP_CRC		      "-1128758"
+      MCHP_CRC		      "-1127652"
       BTMODE		      "Device is in Single Boot (legacy) mode"
       RES1		      "Not used"
       PLLSS		      "PLL is fed by the Primary oscillator"

@@ -1,4 +1,5 @@
 slprj/*
+*.mcp
 *.mexw*
 *.mat
 *.tlog
