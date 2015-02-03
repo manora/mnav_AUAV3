@@ -351,7 +351,7 @@ mavlink_raw_imu_t.Elements = elems;
 assignin('base', 'mavlink_raw_imu_t', mavlink_raw_imu_t)
 
 % Bus object: mlFilteredData
-clear elems;
+% clear elems;
 % 
 % elems(1) = Simulink.BusElement;
 % elems(1).Name = 'time_boot_ms';
@@ -1055,61 +1055,127 @@ clear elems;
 % mavlink_mid_lvl_cmds_t.Elements = elems;
 % assignin('base', 'mavlink_mid_lvl_cmds_t', mavlink_mid_lvl_cmds_t)
 % 
-% % Bus object: AirData
-% clear elems;
-% 
-% elems(1) = Simulink.BusElement;
-% elems(1).Name = 'time_boot_ms';
-% elems(1).Dimensions = 1;
-% elems(1).DimensionsMode = 'Fixed';
-% elems(1).DataType = 'uint32';
-% elems(1).SampleTime = -1;
-% elems(1).Complexity = 'real';
-% elems(1).SamplingMode = 'Sample based';
-% elems(1).Min = [];
-% elems(1).Max = [];
-% 
-% elems(2) = Simulink.BusElement;
-% elems(2).Name = 'press_abs';
-% elems(2).Dimensions = 1;
-% elems(2).DimensionsMode = 'Fixed';
-% elems(2).DataType = 'single';
-% elems(2).SampleTime = -1;
-% elems(2).Complexity = 'real';
-% elems(2).SamplingMode = 'Sample based';
-% elems(2).Min = [];
-% elems(2).Max = [];
-% 
-% elems(3) = Simulink.BusElement;
-% elems(3).Name = 'press_diff';
-% elems(3).Dimensions = 1;
-% elems(3).DimensionsMode = 'Fixed';
-% elems(3).DataType = 'single';
-% elems(3).SampleTime = -1;
-% elems(3).Complexity = 'real';
-% elems(3).SamplingMode = 'Sample based';
-% elems(3).Min = [];
-% elems(3).Max = [];
-% 
-% elems(4) = Simulink.BusElement;
-% elems(4).Name = 'temperature';
-% elems(4).Dimensions = 1;
-% elems(4).DimensionsMode = 'Fixed';
-% elems(4).DataType = 'int16';
-% elems(4).SampleTime = -1;
-% elems(4).Complexity = 'real';
-% elems(4).SamplingMode = 'Sample based';
-% elems(4).Min = [];
-% elems(4).Max = [];
-% 
-% mavlink_scaled_pressure_t = Simulink.Bus;
-% mavlink_scaled_pressure_t.Description = sprintf('mavlink_scaled_pressure');
-% mavlink_scaled_pressure_t.DataScope = 'Imported';
-% mavlink_scaled_pressure_t.HeaderFile = 'mavlink.h'; 
-% mavlink_scaled_pressure_t.Alignment = -1;
-% mavlink_scaled_pressure_t.Elements = elems;
-% assignin('base', 'mavlink_scaled_pressure_t', mavlink_scaled_pressure_t)
-% 
+% % Bus object: mlAirData
+clear elems;
+
+elems(1) = Simulink.BusElement;
+elems(1).Name = 'time_boot_ms';
+elems(1).Dimensions = 1;
+elems(1).DimensionsMode = 'Fixed';
+elems(1).DataType = 'uint32';
+elems(1).SampleTime = -1;
+elems(1).Complexity = 'real';
+elems(1).SamplingMode = 'Sample based';
+elems(1).Min = [];
+elems(1).Max = [];
+
+elems(2) = Simulink.BusElement;
+elems(2).Name = 'press_abs';
+elems(2).Dimensions = 1;
+elems(2).DimensionsMode = 'Fixed';
+elems(2).DataType = 'single';
+elems(2).SampleTime = -1;
+elems(2).Complexity = 'real';
+elems(2).SamplingMode = 'Sample based';
+elems(2).Min = [];
+elems(2).Max = [];
+
+elems(3) = Simulink.BusElement;
+elems(3).Name = 'press_diff';
+elems(3).Dimensions = 1;
+elems(3).DimensionsMode = 'Fixed';
+elems(3).DataType = 'single';
+elems(3).SampleTime = -1;
+elems(3).Complexity = 'real';
+elems(3).SamplingMode = 'Sample based';
+elems(3).Min = [];
+elems(3).Max = [];
+
+elems(4) = Simulink.BusElement;
+elems(4).Name = 'temperature';
+elems(4).Dimensions = 1;
+elems(4).DimensionsMode = 'Fixed';
+elems(4).DataType = 'int16';
+elems(4).SampleTime = -1;
+elems(4).Complexity = 'real';
+elems(4).SamplingMode = 'Sample based';
+elems(4).Min = [];
+elems(4).Max = [];
+
+mavlink_scaled_pressure_t = Simulink.Bus;
+mavlink_scaled_pressure_t.Description = sprintf('mavlink_scaled_pressure');
+mavlink_scaled_pressure_t.DataScope = 'Imported';
+mavlink_scaled_pressure_t.HeaderFile = 'mavlink.h'; 
+mavlink_scaled_pressure_t.Alignment = -1;
+mavlink_scaled_pressure_t.Elements = elems;
+assignin('base', 'mavlink_scaled_pressure_t', mavlink_scaled_pressure_t)
+
+% % Bus object: mlRawPressureData
+clear elems;
+
+elems(1) = Simulink.BusElement;
+elems(1).Name = 'time_boot_ms';
+elems(1).Dimensions = 1;
+elems(1).DimensionsMode = 'Fixed';
+elems(1).DataType = 'uint32';
+elems(1).SampleTime = -1;
+elems(1).Complexity = 'real';
+elems(1).SamplingMode = 'Sample based';
+elems(1).Min = [];
+elems(1).Max = [];
+
+elems(2) = Simulink.BusElement;
+elems(2).Name = 'press_abs';
+elems(2).Dimensions = 1;
+elems(2).DimensionsMode = 'Fixed';
+elems(2).DataType = 'int16';
+elems(2).SampleTime = -1;
+elems(2).Complexity = 'real';
+elems(2).SamplingMode = 'Sample based';
+elems(2).Min = [];
+elems(2).Max = [];
+
+elems(3) = Simulink.BusElement;
+elems(3).Name = 'press_diff1';
+elems(3).Dimensions = 1;
+elems(3).DimensionsMode = 'Fixed';
+elems(3).DataType = 'int16';
+elems(3).SampleTime = -1;
+elems(3).Complexity = 'real';
+elems(3).SamplingMode = 'Sample based';
+elems(3).Min = [];
+elems(3).Max = [];
+
+elems(4) = Simulink.BusElement;
+elems(4).Name = 'press_diff2';
+elems(4).Dimensions = 1;
+elems(4).DimensionsMode = 'Fixed';
+elems(4).DataType = 'int16';
+elems(4).SampleTime = -1;
+elems(4).Complexity = 'real';
+elems(4).SamplingMode = 'Sample based';
+elems(4).Min = [];
+elems(4).Max = [];
+
+elems(5) = Simulink.BusElement;
+elems(5).Name = 'temperature';
+elems(5).Dimensions = 1;
+elems(5).DimensionsMode = 'Fixed';
+elems(5).DataType = 'int16';
+elems(5).SampleTime = -1;
+elems(5).Complexity = 'real';
+elems(5).SamplingMode = 'Sample based';
+elems(5).Min = [];
+elems(5).Max = [];
+
+mavlink_raw_pressure_t = Simulink.Bus;
+mavlink_raw_pressure_t.Description = sprintf('mavlink_raw_pressure');
+mavlink_raw_pressure_t.DataScope = 'Imported';
+mavlink_raw_pressure_t.HeaderFile = 'mavlink.h'; 
+mavlink_raw_pressure_t.Alignment = -1;
+mavlink_raw_pressure_t.Elements = elems;
+
+assignin('base', 'mavlink_raw_pressure_t', mavlink_raw_pressure_t)
 % 
 % % Bus object: mlLocalPositionData
 % clear elems;
@@ -1323,7 +1389,162 @@ mavlink_gps_raw_int_t.Alignment = -1;
 mavlink_gps_raw_int_t.Elements = elems;
 assignin('base', 'mavlink_gps_raw_int_t', mavlink_gps_raw_int_t)
 
+% Bus object: mlSysStatus
 clear elems;
+
+elems(1) = Simulink.BusElement;
+elems(1).Name = 'onboard_control_sensors_present';
+elems(1).Dimensions = 1;
+elems(1).DimensionsMode = 'Fixed';
+elems(1).DataType = 'uint32';
+elems(1).SampleTime = -1;
+elems(1).Complexity = 'real';
+elems(1).SamplingMode = 'Sample based';
+elems(1).Min = [];
+elems(1).Max = [];
+
+elems(2) = Simulink.BusElement;
+elems(2).Name = 'onboard_control_sensors_enabled';
+elems(2).Dimensions = 1;
+elems(2).DimensionsMode = 'Fixed';
+elems(2).DataType = 'uint32';
+elems(2).SampleTime = -1;
+elems(2).Complexity = 'real';
+elems(2).SamplingMode = 'Sample based';
+elems(2).Min = [];
+elems(2).Max = [];
+
+elems(3) = Simulink.BusElement;
+elems(3).Name = 'onboard_control_sensors_health';
+elems(3).Dimensions = 1;
+elems(3).DimensionsMode = 'Fixed';
+elems(3).DataType = 'uint32';
+elems(3).SampleTime = -1;
+elems(3).Complexity = 'real';
+elems(3).SamplingMode = 'Sample based';
+elems(3).Min = [];
+elems(3).Max = [];
+
+elems(4) = Simulink.BusElement;
+elems(4).Name = 'load';
+elems(4).Dimensions = 1;
+elems(4).DimensionsMode = 'Fixed';
+elems(4).DataType = 'uint16';
+elems(4).SampleTime = -1;
+elems(4).Complexity = 'real';
+elems(4).SamplingMode = 'Sample based';
+elems(4).Min = [];
+elems(4).Max = [];
+
+elems(5) = Simulink.BusElement;
+elems(5).Name = 'voltage_battery';
+elems(5).Dimensions = 1;
+elems(5).DimensionsMode = 'Fixed';
+elems(5).DataType = 'uint16';
+elems(5).SampleTime = -1;
+elems(5).Complexity = 'real';
+elems(5).SamplingMode = 'Sample based';
+elems(5).Min = [];
+elems(5).Max = [];
+
+elems(6) = Simulink.BusElement;
+elems(6).Name = 'current_battery';
+elems(6).Dimensions = 1;
+elems(6).DimensionsMode = 'Fixed';
+elems(6).DataType = 'int16';
+elems(6).SampleTime = -1;
+elems(6).Complexity = 'real';
+elems(6).SamplingMode = 'Sample based';
+elems(6).Min = [];
+elems(6).Max = [];
+
+elems(7) = Simulink.BusElement;
+elems(7).Name = 'drop_rate_comm';
+elems(7).Dimensions = 1;
+elems(7).DimensionsMode = 'Fixed';
+elems(7).DataType = 'uint16';
+elems(7).SampleTime = -1;
+elems(7).Complexity = 'real';
+elems(7).SamplingMode = 'Sample based';
+elems(7).Min = [];
+elems(7).Max = [];
+
+elems(8) = Simulink.BusElement;
+elems(8).Name = 'errors_comm';
+elems(8).Dimensions = 1;
+elems(8).DimensionsMode = 'Fixed';
+elems(8).DataType = 'uint16';
+elems(8).SampleTime = -1;
+elems(8).Complexity = 'real';
+elems(8).SamplingMode = 'Sample based';
+elems(8).Min = [];
+elems(8).Max = [];
+
+elems(9) = Simulink.BusElement;
+elems(9).Name = 'errors_count1';
+elems(9).Dimensions = 1;
+elems(9).DimensionsMode = 'Fixed';
+elems(9).DataType = 'uint16';
+elems(9).SampleTime = -1;
+elems(9).Complexity = 'real';
+elems(9).SamplingMode = 'Sample based';
+elems(9).Min = [];
+elems(9).Max = [];
+
+elems(10) = Simulink.BusElement;
+elems(10).Name = 'errors_count2';
+elems(10).Dimensions = 1;
+elems(10).DimensionsMode = 'Fixed';
+elems(10).DataType = 'uint16';
+elems(10).SampleTime = -1;
+elems(10).Complexity = 'real';
+elems(10).SamplingMode = 'Sample based';
+elems(10).Min = [];
+elems(10).Max = [];
+
+elems(11) = Simulink.BusElement;
+elems(11).Name = 'errors_count3';
+elems(11).Dimensions = 1;
+elems(11).DimensionsMode = 'Fixed';
+elems(11).DataType = 'uint16';
+elems(11).SampleTime = -1;
+elems(11).Complexity = 'real';
+elems(11).SamplingMode = 'Sample based';
+elems(11).Min = [];
+elems(11).Max = [];
+
+elems(12) = Simulink.BusElement;
+elems(12).Name = 'errors_count4';
+elems(12).Dimensions = 1;
+elems(12).DimensionsMode = 'Fixed';
+elems(12).DataType = 'uint16';
+elems(12).SampleTime = -1;
+elems(12).Complexity = 'real';
+elems(12).SamplingMode = 'Sample based';
+elems(12).Min = [];
+elems(12).Max = [];
+
+elems(13) = Simulink.BusElement;
+elems(13).Name = 'battery_remaining';
+elems(13).Dimensions = 1;
+elems(13).DimensionsMode = 'Fixed';
+elems(13).DataType = 'uint8';
+elems(13).SampleTime = -1;
+elems(13).Complexity = 'real';
+elems(13).SamplingMode = 'Sample based';
+elems(13).Min = [];
+elems(13).Max = [];
+
+mavlink_sys_status_t = Simulink.Bus;
+mavlink_sys_status_t.Description = sprintf('mavlink_sys_status');
+mavlink_sys_status_t.DataScope = 'Imported';
+mavlink_sys_status_t.HeaderFile = 'mavlink.h'; 
+mavlink_sys_status_t.Alignment = -1;
+mavlink_sys_status_t.Elements = elems;
+assignin('base', 'mavlink_sys_status_t', mavlink_sys_status_t)
+
+clear elems;
+
 % typedef struct __mavlink_gps_date_time_t
 % {
 %  uint8_t year; ///< Year reported by Gps 

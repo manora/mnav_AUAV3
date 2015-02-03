@@ -88,6 +88,36 @@ uint16_t PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_
   return( mavlink_msg_to_send_buffer(UartOutBuff, &msg));
 }
 
+
+uint16_t PackScaledPressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData ,uint32_t time_usec){
+  mavlink_system_t mavlink_system;
+
+  mavlink_system.sysid = system_id;                   ///< ID 20 for this airplane
+  mavlink_system.compid = component_id;//MAV_COMP_ID_IMU;     ///< The component sending the message is the IMU, it could be also a Linux process
+  //////////////////////////////////////////////////////////////////////////
+  mavlink_message_t msg;
+  memset(&msg, 0, sizeof (mavlink_message_t));
+  mavlink_msg_scaled_pressure_pack(system_id, component_id, &msg,
+						       time_usec/1000, mlAirData.press_abs, mlAirData.press_diff, mlAirData.temperature);
+  return( mavlink_msg_to_send_buffer(UartOutBuff, &msg));
+}
+
+uint16_t PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSysStatus){
+  mavlink_system_t mavlink_system;
+
+  mavlink_system.sysid = system_id;                   ///< ID 20 for this airplane
+  mavlink_system.compid = component_id;//MAV_COMP_ID_IMU;     ///< The component sending the message is the IMU, it could be also a Linux process
+  //////////////////////////////////////////////////////////////////////////
+  mavlink_message_t msg;
+  memset(&msg, 0, sizeof (mavlink_message_t));
+  mavlink_msg_sys_status_pack(system_id, component_id, &msg,
+						       mlSysStatus.onboard_control_sensors_present,mlSysStatus.onboard_control_sensors_enabled, mlSysStatus.onboard_control_sensors_health,
+                   mlSysStatus.load, mlSysStatus.voltage_battery, mlSysStatus.current_battery,
+                   mlSysStatus.battery_remaining, mlSysStatus.drop_rate_comm, mlSysStatus.errors_comm,
+                   mlSysStatus.errors_count1, mlSysStatus.errors_count2, mlSysStatus.errors_count3, mlSysStatus.errors_count4);
+  return( mavlink_msg_to_send_buffer(UartOutBuff, &msg));
+}
+
 char sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart) {
     mavlink_message_t msg;
     unsigned char bytes2Send = 0; // size in bytes of the mavlink packed message (return value)
@@ -104,9 +134,9 @@ char sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* 
 }
   
 
-uint8_t GetCharAtBuffIdx(int32_t idx){
-    return(UartOutBuff[idx]);
-}
+//uint8_t GetCharAtBuffIdx(int32_t idx){
+//    return(UartOutBuff[idx]);
+//}
 /* Declare UART1 Tx Circular Buffer Structure */
 extern MCHP_UART1_TxStr MCHP_UART1_Tx;
 
