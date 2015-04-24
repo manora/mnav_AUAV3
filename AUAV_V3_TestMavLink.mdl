@@ -6,13 +6,13 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.113"
+    ComputedModelVersion    "1.119"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
   Description		  "Rapid Prototyping model.\nRequire the MPLAB Blockset for Simulink v3.30 or above. [http://www.microc"
-  "hip.com/SimulinkBlocks]\nAuthor: Lubin Kerhuel\n\nGet AGM sensors raw values from the UAV V3 board from Asrovtech. ["
-  "http://arsovtech.com/?p=1414]\n"
+  "hip.com/SimulinkBlocks]\nAuthor:Avi Manor Based on Lubin Kerhuels work and code from SLUGS\n\nTest Mavlink on AUAV V"
+  "3 board from Asrovtech. [http://arsovtech.com/?p=1414]\n"
   SavedCharacterEncoding  "windows-1252"
   PreLoadFcn		  "T = 0.0025;\nMavlinkBus;\n\n% Baro Altitude Computation\n% =========================\nbasePressure = "
   "98192.64;\nbaseTemp = 288.215;\nlapseRate = -0.00198122;\nbaseHeight = 0;"
@@ -32,9 +32,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "UglyRed"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Feb 04 01:45:08 2015"
-  RTWModifiedTimeStamp	  344914885
-  ModelVersionFormat	  "1.%<AutoIncrement:113>"
+  LastModifiedDate	  "Sat Apr 25 01:27:14 2015"
+  RTWModifiedTimeStamp	  351825040
+  ModelVersionFormat	  "1.%<AutoIncrement:119>"
   ConfigurationManager	  "none"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -410,7 +410,7 @@ Model {
 	  GenerateMakefile	  on
 	  TemplateMakefile	  "MCHP_dsPIC.tmf"
 	  Description		  "Microchip Embedded Target PIC24 dsPIC30 dsPIC33 (real-time)"
-	  GenerateReport	  on
+	  GenerateReport	  off
 	  SaveLog		  off
 	  RTWVerbose		  on
 	  RetainRTWFile		  off
@@ -424,20 +424,20 @@ Model {
 	  ConfigAtBuild		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
-	  CustomSourceCode	  "#include \"gpsPort.h\""
+	  CustomSourceCode	  "#include \"gpsPort.h\"\n#include \"MavlinkComm.h\""
 	  CustomInclude		  "mavlink\\include\\common\\\nclib\\"
 	  CustomSource		  "clib\\MavlinkComm.c\nclib\\gpsUblox.c\nclib\\circBuffer.c\nclib\\gpsPort.c"
-	  CustomInitializer	  "uartBufferInit();"
-	  IncludeHyperlinkInReport on
-	  LaunchReport		  on
+	  CustomInitializer	  "uartBufferInit();\nuartMavlinkBufferInit ();\nInitParameterInterface();"
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
 	  TargetLang		  "C"
 	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
 	  IncludeERTFirstTime	  off
-	  GenerateTraceInfo	  on
-	  GenerateTraceReport	  on
-	  GenerateTraceReportSl	  on
-	  GenerateTraceReportSf	  on
-	  GenerateTraceReportEml  on
+	  GenerateTraceInfo	  off
+	  GenerateTraceReport	  off
+	  GenerateTraceReportSl	  off
+	  GenerateTraceReportSf	  off
+	  GenerateTraceReportEml  off
 	  GenerateCodeInfo	  off
 	  GenerateSLWebview	  off
 	  GenerateCodeMetricsReport off
@@ -813,15 +813,18 @@ Model {
 		"6).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(7).Value=reshape([0.1 0],1,2);s(7).Description='Discrete 7';s(7)."
 		"ColorRGBValue=reshape([1 0.5 0],1,3);s(7).Annotation='D7';s(7).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(8).Va"
 		"lue=reshape([0.2 0],1,2);s(8).Description='Discrete 8';s(8).ColorRGBValue=reshape([1 0.5 0],1,3);s(8).Annotation='D8"
-		"';s(8).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(9).Value=reshape([0.2 0.1],1,2);s(9).Description='Discrete 9'"
-		";s(9).ColorRGBValue=reshape([1 0.5 0],1,3);s(9).Annotation='D9';s(9).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s"
-		"(10).Value=reshape([0.25 0],1,2);s(10).Description='Discrete 10';s(10).ColorRGBValue=reshape([1 0.5 0],1,3);s(10).An"
-		"notation='D10';s(10).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(11).Value=reshape([0.5 0],1,2);s(11).Descriptio"
-		"n='Discrete 11';s(11).ColorRGBValue=reshape([1 0.5 0],1,3);s(11).Annotation='D11';s(11).OwnerBlock=reshape(MCHP_FunH"
-		"ex2num('[]'),0,0);s(12).Value=reshape([Inf 0],1,2);s(12).Description='Constant';s(12).ColorRGBValue=reshape([1 0.26 "
-		"0.82],1,3);s(12).Annotation='Inf';s(12).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(13).Value=reshape(MCHP_FunHe"
-		"x2num('[]'),0,0);s(13).Description='Hybrid';s(13).ColorRGBValue=reshape([0.91 0.82 0.32],1,3);s(13).Annotation='H';s"
-		"(13).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);"
+		"';s(8).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(9).Value=reshape([0.2 0.02],1,2);s(9).Description='Discrete 9"
+		"';s(9).ColorRGBValue=reshape([1 0.5 0],1,3);s(9).Annotation='D9';s(9).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);"
+		"s(10).Value=reshape([0.2 0.04],1,2);s(10).Description='Discrete 10';s(10).ColorRGBValue=reshape([1 0.5 0],1,3);s(10)"
+		".Annotation='D10';s(10).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(11).Value=reshape([0.2 0.06],1,2);s(11).Desc"
+		"ription='Discrete 11';s(11).ColorRGBValue=reshape([1 0.5 0],1,3);s(11).Annotation='D11';s(11).OwnerBlock=reshape(MCH"
+		"P_FunHex2num('[]'),0,0);s(12).Value=reshape([0.25 0],1,2);s(12).Description='Discrete 12';s(12).ColorRGBValue=reshap"
+		"e([1 0.5 0],1,3);s(12).Annotation='D12';s(12).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(13).Value=reshape([0.5"
+		" 0],1,2);s(13).Description='Discrete 13';s(13).ColorRGBValue=reshape([1 0.5 0],1,3);s(13).Annotation='D13';s(13).Own"
+		"erBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(14).Value=reshape([Inf 0],1,2);s(14).Description='Constant';s(14).Color"
+		"RGBValue=reshape([1 0.26 0.82],1,3);s(14).Annotation='Inf';s(14).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);s(15)"
+		".Value=reshape(MCHP_FunHex2num('[]'),0,0);s(15).Description='Hybrid';s(15).ColorRGBValue=reshape([0.91 0.82 0.32],1,"
+		"3);s(15).Annotation='H';s(15).OwnerBlock=reshape(MCHP_FunHex2num('[]'),0,0);"
 	      }
 	    }
 	    PropName		    "Components"
@@ -830,9 +833,9 @@ Model {
 	PropName		"Components"
       }
       Name		      "Configuration"
-      ExtraOptions	      "-aGenerateTraceInfo=1 -aIgnoreTestpoints=0 "
-      CurrentDlgPage	      "Solver"
-      ConfigPrmDlgPosition     [ 360, -25, 1321, 903 ] 
+      ExtraOptions	      "-aGenerateTraceInfo=0 -aIgnoreTestpoints=0 "
+      CurrentDlgPage	      "Code Generation/Custom Code"
+      ConfigPrmDlgPosition     [ 243, 78, 1124, 628 ] 
     }
     PropName		    "ConfigurationSets"
   }
@@ -1172,7 +1175,7 @@ Model {
   }
   System {
     Name		    "AUAV_V3_TestMavLink"
-    Location		    [266, 106, 1296, 745]
+    Location		    [359, 111, 1192, 594]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -1186,7 +1189,7 @@ Model {
     ShowPageBoundaries	    off
     ZoomFactor		    "100"
     ReportName		    "simulink-default.rpt"
-    SIDHighWatermark	    "428"
+    SIDHighWatermark	    "431"
     Block {
       BlockType		      Reference
       Name		      " gpsUbloxParse"
@@ -1210,6 +1213,48 @@ Model {
       "d)','  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* s"
       "tringToTokenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(un"
       "signed char* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,13);"
+      ORDERING		      "None"
+      SampleTime	      "0.2"
+      MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+      PinDigitalInput	      "[]"
+      PinDigitalOutput	      "[]   "
+      PinAnalogInput	      "[]"
+    }
+    Block {
+      BlockType		      Reference
+      Name		      " protDecodeMavlink"
+      SID		      "429"
+      Ports		      []
+      Position		      [430, 332, 590, 388]
+      LibraryVersion	      "3.36"
+      SourceBlock	      "MCHP_Blockset/User Functions/C Function Call"
+      SourceType	      "C Function Call"
+      ParseFilesChkbx	      on
+      ListFunctions1	      "Custom Function"
+      Function1		      "void protDecodeMavlink(void)"
+      AddHeaderDeclaration    off
+      Function1Type	      "when block is updated (default)"
+      FctReturnBlockOut	      on
+      DataCollected	      "s.chksm=reshape({ '947024-Apr-2015 23:51:07','1582103-Feb-2015 20:58:09','638503-Feb-2015 2"
+      "0:58:09','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  void  uartMavlinkBufferInit(void)','  void __attr"
+      "ibute__((__interrupt__,__auto_psv__)) _U1RXInterrupt(void)','  void  protDecodeMavlink(void)','  uint16_t  PackH"
+      "eartBeat(uint8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component"
+      "_id)','  uint16_t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t "
+      "time_usec)','  uint16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDa"
+      "taInt ,uint32_t time_usec)','  uint16_t  PackScaledPressure(uint8_t system_id, uint8_t component_id, mavlink_sca"
+      "led_pressure_t mlAirData ,uint32_t time_usec)','  uint16_t  PackSysStatus(uint8_t system_id, uint8_t component_i"
+      "d, mavlink_sys_status_t mlSysStatus)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, unsig"
+      "ned char* bytesToAdd, char positionStart)','  void  TxN_Data_OverU1(uint16_t N)'},1,11);s.File2=reshape({ '  cha"
+      "r  hex2char(char halfhex)','  float  degMinToDeg(unsigned char degrees, float minutes)',' unsigned char  gpsUblo"
+      "xSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','  void  getGpsUbloxMainData(float* data)',' "
+      " char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToTokenize, char token, char * returnToken)'"
+      ",'  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned char* stream)',' unsigned char  getChecksu"
+      "m(unsigned char* sentence, unsigned char size)'},1,10);s.File3=reshape({ '  void  newCircBuffer(CBRef cB)','  vo"
+      "id  freeCircBuffer(CBRef* cB)','  void  freeCircBuffer(CBRef* cB)',' unsigned int  getLength(CBRef cB)','  int  "
+      "readHead(CBRef cB)','  int  readTail(CBRef cB)',' unsigned char  peak(CBRef cB)',' unsigned char  readFront(CBRe"
+      "f cB)',' unsigned char  writeBack(CBRef cB, unsigned char data)','  void  makeEmpty(CBRef cB)','  void  printCir"
+      "cBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBufferInit(void)','  void  __attribute__((__interrupt__, n"
+      "o_auto_psv)) _U4RXInterrupt(void)'},1,2);"
       ORDERING		      "None"
       SampleTime	      "0.2"
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
@@ -1708,7 +1753,7 @@ Model {
       MaskHideContents	      off
       System {
 	Name			"MavlinkTX"
-	Location		[747, 132, 1457, 823]
+	Location		[202, 82, 1331, 715]
 	Open			off
 	ModelBrowserVisibility	on
 	ModelBrowserWidth	200
@@ -1822,24 +1867,26 @@ Model {
 	  Function1Type		  "when block is updated (default)"
 	  Fct1BlockIn		  "system_id  , component_id  , mlRawGpsDataInt  , time_usec"
 	  FctReturnBlockOut	  on
-	  DataCollected		  "s.chksm=reshape({ '741904-Feb-2015 00:24:08','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:0"
-	  "9','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t system_id, uint8_t compone"
-	  "nt_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_i"
-	  "d, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint16_t  PackGpsRawInt(uint8_t sy"
-	  "stem_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_usec)','  uint16_t  PackScaledP"
-	  "ressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData ,uint32_t time_usec)','  uint1"
-	  "6_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSysStatus)','  char  sendQGCDebu"
-	  "gMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)','  void  TxN_Data_"
-	  "OverU1(uint16_t N)'},1,8);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDeg(unsigned char de"
-	  "grees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','"
-	  "  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToT"
-	  "okenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned char"
-	  "* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,10);s.File3=reshape({ '  v"
-	  "oid  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircBuffer(CBRef* cB)',' unsigned in"
-	  "t  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' unsigned char  peak(CBRef cB)',' "
-	  "unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned char data)','  void  makeEmpty(CB"
-	  "Ref cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBufferInit(void)','  void  __attrib"
-	  "ute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
+	  DataCollected		  "s.chksm=reshape({ '1775025-Apr-2015 00:54:58','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:"
+	  "09','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  void  uartMavlinkBufferInit(void)','  void __attribute__("
+	  "(__interrupt__,__auto_psv__)) _U1RXInterrupt(void)','  uint8_t  isFinite(float s)','  void  protDecodeMavlink(void)"
+	  "','  uint16_t  ParameterInterfaceResponse(uint8_t system_id, uint8_t component_id)','  uint16_t  PackHeartBeat(uint"
+	  "8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_"
+	  "t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint"
+	  "16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_u"
+	  "sec)','  uint16_t  PackScaledPressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData "
+	  ",uint32_t time_usec)','  uint16_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSy"
+	  "sStatus)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char posi"
+	  "tionStart)','  void  TxN_Data_OverU1(uint16_t N)'},1,13);s.File2=reshape({ '  char  hex2char(char halfhex)','  floa"
+	  "t  degMinToDeg(unsigned char degrees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)',"
+	  "'  void  gpsUbloxParse(void)','  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned ch"
+	  "ar  myTokenizer(char* stringToTokenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)',"
+	  "'  void  parseGGA(unsigned char* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)"
+	  "'},1,10);s.File3=reshape({ '  void  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircB"
+	  "uffer(CBRef* cB)',' unsigned int  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' un"
+	  "signed char  peak(CBRef cB)',' unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned ch"
+	  "ar data)','  void  makeEmpty(CBRef cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBuff"
+	  "erInit(void)','  void  __attribute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
 	  ORDERING		  "None"
 	  SampleTime		  "0.2"
 	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
@@ -1863,24 +1910,26 @@ Model {
 	  Function1Type		  "when block is updated (default)"
 	  Fct1BlockIn		  "system_id  , component_id"
 	  FctReturnBlockOut	  on
-	  DataCollected		  "s.chksm=reshape({ '741904-Feb-2015 00:24:08','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:0"
-	  "9','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t system_id, uint8_t compone"
-	  "nt_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_i"
-	  "d, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint16_t  PackGpsRawInt(uint8_t sy"
-	  "stem_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_usec)','  uint16_t  PackScaledP"
-	  "ressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData ,uint32_t time_usec)','  uint1"
-	  "6_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSysStatus)','  char  sendQGCDebu"
-	  "gMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)','  void  TxN_Data_"
-	  "OverU1(uint16_t N)'},1,8);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDeg(unsigned char de"
-	  "grees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','"
-	  "  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToT"
-	  "okenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned char"
-	  "* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,10);s.File3=reshape({ '  v"
-	  "oid  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircBuffer(CBRef* cB)',' unsigned in"
-	  "t  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' unsigned char  peak(CBRef cB)',' "
-	  "unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned char data)','  void  makeEmpty(CB"
-	  "Ref cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBufferInit(void)','  void  __attrib"
-	  "ute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
+	  DataCollected		  "s.chksm=reshape({ '1775025-Apr-2015 00:54:58','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:"
+	  "09','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  void  uartMavlinkBufferInit(void)','  void __attribute__("
+	  "(__interrupt__,__auto_psv__)) _U1RXInterrupt(void)','  uint8_t  isFinite(float s)','  void  protDecodeMavlink(void)"
+	  "','  uint16_t  ParameterInterfaceResponse(uint8_t system_id, uint8_t component_id)','  uint16_t  PackHeartBeat(uint"
+	  "8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_"
+	  "t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint"
+	  "16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_u"
+	  "sec)','  uint16_t  PackScaledPressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData "
+	  ",uint32_t time_usec)','  uint16_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSy"
+	  "sStatus)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char posi"
+	  "tionStart)','  void  TxN_Data_OverU1(uint16_t N)'},1,13);s.File2=reshape({ '  char  hex2char(char halfhex)','  floa"
+	  "t  degMinToDeg(unsigned char degrees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)',"
+	  "'  void  gpsUbloxParse(void)','  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned ch"
+	  "ar  myTokenizer(char* stringToTokenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)',"
+	  "'  void  parseGGA(unsigned char* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)"
+	  "'},1,10);s.File3=reshape({ '  void  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircB"
+	  "uffer(CBRef* cB)',' unsigned int  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' un"
+	  "signed char  peak(CBRef cB)',' unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned ch"
+	  "ar data)','  void  makeEmpty(CBRef cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBuff"
+	  "erInit(void)','  void  __attribute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
 	  ORDERING		  "None"
 	  SampleTime		  "0.5"
 	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
@@ -1905,24 +1954,26 @@ Model {
 	  Function1Type		  "when block is updated (default)"
 	  Fct1BlockIn		  "system_id  , component_id  , mlRawIMUData  , time_usec"
 	  FctReturnBlockOut	  on
-	  DataCollected		  "s.chksm=reshape({ '741904-Feb-2015 00:24:08','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:0"
-	  "9','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t system_id, uint8_t compone"
-	  "nt_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_i"
-	  "d, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint16_t  PackGpsRawInt(uint8_t sy"
-	  "stem_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_usec)','  uint16_t  PackScaledP"
-	  "ressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData ,uint32_t time_usec)','  uint1"
-	  "6_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSysStatus)','  char  sendQGCDebu"
-	  "gMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)','  void  TxN_Data_"
-	  "OverU1(uint16_t N)'},1,8);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDeg(unsigned char de"
-	  "grees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','"
-	  "  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToT"
-	  "okenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned char"
-	  "* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,10);s.File3=reshape({ '  v"
-	  "oid  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircBuffer(CBRef* cB)',' unsigned in"
-	  "t  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' unsigned char  peak(CBRef cB)',' "
-	  "unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned char data)','  void  makeEmpty(CB"
-	  "Ref cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBufferInit(void)','  void  __attrib"
-	  "ute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
+	  DataCollected		  "s.chksm=reshape({ '1775025-Apr-2015 00:54:58','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:"
+	  "09','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  void  uartMavlinkBufferInit(void)','  void __attribute__("
+	  "(__interrupt__,__auto_psv__)) _U1RXInterrupt(void)','  uint8_t  isFinite(float s)','  void  protDecodeMavlink(void)"
+	  "','  uint16_t  ParameterInterfaceResponse(uint8_t system_id, uint8_t component_id)','  uint16_t  PackHeartBeat(uint"
+	  "8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_"
+	  "t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint"
+	  "16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_u"
+	  "sec)','  uint16_t  PackScaledPressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData "
+	  ",uint32_t time_usec)','  uint16_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSy"
+	  "sStatus)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char posi"
+	  "tionStart)','  void  TxN_Data_OverU1(uint16_t N)'},1,13);s.File2=reshape({ '  char  hex2char(char halfhex)','  floa"
+	  "t  degMinToDeg(unsigned char degrees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)',"
+	  "'  void  gpsUbloxParse(void)','  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned ch"
+	  "ar  myTokenizer(char* stringToTokenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)',"
+	  "'  void  parseGGA(unsigned char* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)"
+	  "'},1,10);s.File3=reshape({ '  void  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircB"
+	  "uffer(CBRef* cB)',' unsigned int  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' un"
+	  "signed char  peak(CBRef cB)',' unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned ch"
+	  "ar data)','  void  makeEmpty(CBRef cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBuff"
+	  "erInit(void)','  void  __attribute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
 	  ORDERING		  "None"
 	  SampleTime		  "0.02"
 	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
@@ -1947,26 +1998,28 @@ Model {
 	  Function1Type		  "when block is updated (default)"
 	  Fct1BlockIn		  "system_id  , component_id  , mlAirData  , time_usec"
 	  FctReturnBlockOut	  on
-	  DataCollected		  "s.chksm=reshape({ '741904-Feb-2015 00:24:08','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:0"
-	  "9','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t system_id, uint8_t compone"
-	  "nt_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_i"
-	  "d, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint16_t  PackGpsRawInt(uint8_t sy"
-	  "stem_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_usec)','  uint16_t  PackScaledP"
-	  "ressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData ,uint32_t time_usec)','  uint1"
-	  "6_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSysStatus)','  char  sendQGCDebu"
-	  "gMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)','  void  TxN_Data_"
-	  "OverU1(uint16_t N)'},1,8);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDeg(unsigned char de"
-	  "grees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','"
-	  "  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToT"
-	  "okenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned char"
-	  "* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,10);s.File3=reshape({ '  v"
-	  "oid  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircBuffer(CBRef* cB)',' unsigned in"
-	  "t  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' unsigned char  peak(CBRef cB)',' "
-	  "unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned char data)','  void  makeEmpty(CB"
-	  "Ref cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBufferInit(void)','  void  __attrib"
-	  "ute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
+	  DataCollected		  "s.chksm=reshape({ '1775025-Apr-2015 00:54:58','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:"
+	  "09','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  void  uartMavlinkBufferInit(void)','  void __attribute__("
+	  "(__interrupt__,__auto_psv__)) _U1RXInterrupt(void)','  uint8_t  isFinite(float s)','  void  protDecodeMavlink(void)"
+	  "','  uint16_t  ParameterInterfaceResponse(uint8_t system_id, uint8_t component_id)','  uint16_t  PackHeartBeat(uint"
+	  "8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_"
+	  "t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint"
+	  "16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_u"
+	  "sec)','  uint16_t  PackScaledPressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData "
+	  ",uint32_t time_usec)','  uint16_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSy"
+	  "sStatus)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char posi"
+	  "tionStart)','  void  TxN_Data_OverU1(uint16_t N)'},1,13);s.File2=reshape({ '  char  hex2char(char halfhex)','  floa"
+	  "t  degMinToDeg(unsigned char degrees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)',"
+	  "'  void  gpsUbloxParse(void)','  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned ch"
+	  "ar  myTokenizer(char* stringToTokenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)',"
+	  "'  void  parseGGA(unsigned char* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)"
+	  "'},1,10);s.File3=reshape({ '  void  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircB"
+	  "uffer(CBRef* cB)',' unsigned int  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' un"
+	  "signed char  peak(CBRef cB)',' unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned ch"
+	  "ar data)','  void  makeEmpty(CBRef cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBuff"
+	  "erInit(void)','  void  __attribute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
 	  ORDERING		  "None"
-	  SampleTime		  "[0.2 0.1]"
+	  SampleTime		  "[0.2 0.02]"
 	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
 	  PinDigitalInput	  "[]"
 	  PinDigitalOutput	  "[]   "
@@ -1988,26 +2041,71 @@ Model {
 	  Function1Type		  "when block is updated (default)"
 	  Fct1BlockIn		  "system_id  , component_id  , mlSysStatus"
 	  FctReturnBlockOut	  on
-	  DataCollected		  "s.chksm=reshape({ '741904-Feb-2015 00:24:08','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:0"
-	  "9','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t system_id, uint8_t compone"
-	  "nt_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t  PackRawIMU(uint8_t system_i"
-	  "d, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint16_t  PackGpsRawInt(uint8_t sy"
-	  "stem_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_usec)','  uint16_t  PackScaledP"
-	  "ressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData ,uint32_t time_usec)','  uint1"
-	  "6_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSysStatus)','  char  sendQGCDebu"
-	  "gMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)','  void  TxN_Data_"
-	  "OverU1(uint16_t N)'},1,8);s.File2=reshape({ '  char  hex2char(char halfhex)','  float  degMinToDeg(unsigned char de"
-	  "grees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)','  void  gpsUbloxParse(void)','"
-	  "  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned char  myTokenizer(char* stringToT"
-	  "okenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)','  void  parseGGA(unsigned char"
-	  "* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)'},1,10);s.File3=reshape({ '  v"
-	  "oid  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircBuffer(CBRef* cB)',' unsigned in"
-	  "t  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' unsigned char  peak(CBRef cB)',' "
-	  "unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned char data)','  void  makeEmpty(CB"
-	  "Ref cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBufferInit(void)','  void  __attrib"
-	  "ute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
+	  DataCollected		  "s.chksm=reshape({ '1775025-Apr-2015 00:54:58','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:"
+	  "09','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  void  uartMavlinkBufferInit(void)','  void __attribute__("
+	  "(__interrupt__,__auto_psv__)) _U1RXInterrupt(void)','  uint8_t  isFinite(float s)','  void  protDecodeMavlink(void)"
+	  "','  uint16_t  ParameterInterfaceResponse(uint8_t system_id, uint8_t component_id)','  uint16_t  PackHeartBeat(uint"
+	  "8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_"
+	  "t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint"
+	  "16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_u"
+	  "sec)','  uint16_t  PackScaledPressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData "
+	  ",uint32_t time_usec)','  uint16_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSy"
+	  "sStatus)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char posi"
+	  "tionStart)','  void  TxN_Data_OverU1(uint16_t N)'},1,13);s.File2=reshape({ '  char  hex2char(char halfhex)','  floa"
+	  "t  degMinToDeg(unsigned char degrees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)',"
+	  "'  void  gpsUbloxParse(void)','  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned ch"
+	  "ar  myTokenizer(char* stringToTokenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)',"
+	  "'  void  parseGGA(unsigned char* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)"
+	  "'},1,10);s.File3=reshape({ '  void  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircB"
+	  "uffer(CBRef* cB)',' unsigned int  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' un"
+	  "signed char  peak(CBRef cB)',' unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned ch"
+	  "ar data)','  void  makeEmpty(CBRef cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBuff"
+	  "erInit(void)','  void  __attribute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
 	  ORDERING		  "None"
-	  SampleTime		  "[0.2 0.1]"
+	  SampleTime		  "[0.2 0.04]"
+	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+	  PinDigitalInput	  "[]"
+	  PinDigitalOutput	  "[]   "
+	  PinAnalogInput	  "[]"
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "ParamInterfaceResponse"
+	  SID			  "430"
+	  Ports			  [2, 1]
+	  Position		  [320, 691, 480, 789]
+	  LibraryVersion	  "3.36"
+	  SourceBlock		  "MCHP_Blockset/User Functions/C Function Call"
+	  SourceType		  "C Function Call"
+	  ParseFilesChkbx	  on
+	  ListFunctions1	  "Custom Function"
+	  Function1		  "uint16_t ParameterInterfaceResponse(uint8_t system_id, uint8_t component_id)"
+	  AddHeaderDeclaration	  on
+	  Function1Type		  "when block is updated (default)"
+	  Fct1BlockIn		  "system_id  , component_id"
+	  FctReturnBlockOut	  on
+	  DataCollected		  "s.chksm=reshape({ '1775025-Apr-2015 00:54:58','1582103-Feb-2015 20:58:09','638503-Feb-2015 20:58:"
+	  "09','200703-Feb-2015 20:58:09'},1,4);s.File1=reshape({ '  void  uartMavlinkBufferInit(void)','  void __attribute__("
+	  "(__interrupt__,__auto_psv__)) _U1RXInterrupt(void)','  uint8_t  isFinite(float s)','  void  protDecodeMavlink(void)"
+	  "','  uint16_t  ParameterInterfaceResponse(uint8_t system_id, uint8_t component_id)','  uint16_t  PackHeartBeat(uint"
+	  "8_t system_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_"
+	  "t  PackRawIMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  uint"
+	  "16_t  PackGpsRawInt(uint8_t system_id, uint8_t component_id, mavlink_gps_raw_int_t mlRawGpsDataInt ,uint32_t time_u"
+	  "sec)','  uint16_t  PackScaledPressure(uint8_t system_id, uint8_t component_id, mavlink_scaled_pressure_t mlAirData "
+	  ",uint32_t time_usec)','  uint16_t  PackSysStatus(uint8_t system_id, uint8_t component_id, mavlink_sys_status_t mlSy"
+	  "sStatus)','  char  sendQGCDebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char posi"
+	  "tionStart)','  void  TxN_Data_OverU1(uint16_t N)'},1,13);s.File2=reshape({ '  char  hex2char(char halfhex)','  floa"
+	  "t  degMinToDeg(unsigned char degrees, float minutes)',' unsigned char  gpsUbloxSeparate(unsigned char* outStream)',"
+	  "'  void  gpsUbloxParse(void)','  void  getGpsUbloxMainData(float* data)','  char  gpSmbl(char symbl)',' unsigned ch"
+	  "ar  myTokenizer(char* stringToTokenize, char token, char * returnToken)','  void  parseRMC(unsigned char* stream)',"
+	  "'  void  parseGGA(unsigned char* stream)',' unsigned char  getChecksum(unsigned char* sentence, unsigned char size)"
+	  "'},1,10);s.File3=reshape({ '  void  newCircBuffer(CBRef cB)','  void  freeCircBuffer(CBRef* cB)','  void  freeCircB"
+	  "uffer(CBRef* cB)',' unsigned int  getLength(CBRef cB)','  int  readHead(CBRef cB)','  int  readTail(CBRef cB)',' un"
+	  "signed char  peak(CBRef cB)',' unsigned char  readFront(CBRef cB)',' unsigned char  writeBack(CBRef cB, unsigned ch"
+	  "ar data)','  void  makeEmpty(CBRef cB)','  void  printCircBuf(CBRef cB)'},1,11);s.File4=reshape({ '  void  uartBuff"
+	  "erInit(void)','  void  __attribute__((__interrupt__, no_auto_psv)) _U4RXInterrupt(void)'},1,2);"
+	  ORDERING		  "None"
+	  SampleTime		  "[0.2 0.06]"
 	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
 	  PinDigitalInput	  "[]"
 	  PinDigitalOutput	  "[]   "
@@ -2162,6 +2260,34 @@ Model {
 	  PinDigitalOutput	  "[]   "
 	  PinAnalogInput	  "[]"
 	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "TX_N_Data5"
+	  SID			  "431"
+	  Ports			  [1]
+	  Position		  [525, 691, 685, 789]
+	  LibraryVersion	  "3.36"
+	  SourceBlock		  "MCHP_Blockset/User Functions/C Function Call"
+	  SourceType		  "C Function Call"
+	  ParseFilesChkbx	  on
+	  ListFunctions1	  "Custom Function"
+	  Function1		  "void TxN_Data_OverU1(uint16_t N)"
+	  AddHeaderDeclaration	  on
+	  Function1Type		  "when block is updated (default)"
+	  Fct1BlockIn		  "N"
+	  FctReturnBlockOut	  on
+	  DataCollected		  "s.chksm={ '452509-Jan-2015 23:52:22'};s.File1=reshape({ '  uint16_t  PackHeartBeat(uint8_t system"
+	  "_id, uint8_t component_id)','  uint16_t  PackTextMsg(uint8_t system_id, uint8_t component_id)','  uint16_t  PackRaw"
+	  "IMU(uint8_t system_id, uint8_t component_id, mavlink_raw_imu_t mlRawIMUData ,uint32_t time_usec)','  char  sendQGCD"
+	  "ebugMessage(const char * dbgMessage, char severity, unsigned char* bytesToAdd, char positionStart)','  uint8_t  Get"
+	  "CharAtBuffIdx(int32_t idx)','  void  TxN_Data_OverU1(uint16_t N)'},1,6);"
+	  ORDERING		  "None"
+	  SampleTime		  "-1"
+	  MCHP_MASTERLINK	  "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
+	  PinDigitalInput	  "[]"
+	  PinDigitalOutput	  "[]   "
+	  PinAnalogInput	  "[]"
+	}
 	Line {
 	  SrcBlock		  "Get mlSysStatus"
 	  SrcPort		  1
@@ -2261,9 +2387,17 @@ Model {
 		  DstPort		  2
 		}
 		Branch {
-		  Points		  [0, 140]
-		  DstBlock		  "PackSysStatus"
-		  DstPort		  2
+		  Points		  [0, 135]
+		  Branch {
+		    Points		    [0, 5]
+		    DstBlock		    "PackSysStatus"
+		    DstPort		    2
+		  }
+		  Branch {
+		    Points		    [0, 155]
+		    DstBlock		    "ParamInterfaceResponse"
+		    DstPort		    2
+		  }
 		}
 	      }
 	    }
@@ -2296,13 +2430,26 @@ Model {
 		  DstPort		  1
 		}
 		Branch {
-		  Points		  [0, 135]
-		  DstBlock		  "PackSysStatus"
-		  DstPort		  1
+		  Points		  [0, 135; 5, 0]
+		  Branch {
+		    DstBlock		    "PackSysStatus"
+		    DstPort		    1
+		  }
+		  Branch {
+		    Points		    [-5, 0; 0, 130]
+		    DstBlock		    "ParamInterfaceResponse"
+		    DstPort		    1
+		  }
 		}
 	      }
 	    }
 	  }
+	}
+	Line {
+	  SrcBlock		  "ParamInterfaceResponse"
+	  SrcPort		  1
+	  DstBlock		  "TX_N_Data5"
+	  DstPort		  1
 	}
       }
     }
@@ -2584,8 +2731,8 @@ Model {
       Frame		      "off"
       DisplayStringWithTags   "%<Description>"
       MaskDisplayString	      "Rapid Prototyping model.\\nRequire the MPLAB Blockset for Simulink v3.30 or above. [htt"
-      "p://www.microchip.com/SimulinkBlocks]\\nAuthor: Lubin Kerhuel\\n\\nGet AGM sensors raw values from the UAV V3 bo"
-      "ard from Asrovtech. [http://arsovtech.com/?p=1414]\\n"
+      "p://www.microchip.com/SimulinkBlocks]\\nAuthor:Avi Manor Based on Lubin Kerhuels work and code from SLUGS\\n\\nT"
+      "est Mavlink on AUAV V3 board from Asrovtech. [http://arsovtech.com/?p=1414]\\n"
       HorizontalTextAlignment "Center"
       LeftAlignmentValue      "0.5"
       SourceBlockDiagram      "AUAV_V3_TestMavLink"
@@ -9358,7 +9505,7 @@ Model {
       SourceType	      "Configuration for UART peripheral"
       UART_REF		      "1"
       BAUD_Choice	      "Dynamic Options"
-      BAUD_Choice_TXT	      "  115200         [-0.06%]"
+      BAUD_Choice_TXT	      "   57600         [-0.06%]"
       BAUD_Choice_IR	      "Dynamic Options"
       BAUD_Choice_IR_TXT      "[]"
       BAUD_Custom	      "115200"
@@ -9383,7 +9530,7 @@ Model {
       RX_IMPLEMENTATION	      "Do not implement Rx"
       RX_INT_PRIORITY	      "1"
       RX_INT_WHEN	      "receive 1 character"
-      RX_CIRCULAR_SIZE	      "32"
+      RX_CIRCULAR_SIZE	      "128"
       InitSequence_chkbox     on
       BAUD_Choice_InitSeq     "Dynamic Options"
       BAUD_Choice_InitSeq_TXT "     110         [-0.00%]"
