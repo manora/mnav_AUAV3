@@ -5,13 +5,22 @@
 extern CBRef uartMavlinkInBuffer;
 extern struct CircBuffer comMavlinkBuffer;
 void uartMavlinkBufferInit (void);
-  #define SYSTEMID		101
-  #define COMPID		1
 
-  #define MAXINLEN      200
-  #define MAXSEND	109
-  #define MAX_NUM_WPS   17
-  #define PARAM_NAME_LENGTH	16
+#define SUCCESS ((char)0)
+#define FAILURE ((char)-1)
+
+#define SYSTEMID	101
+#define COMPID		1
+#define GS_SYSTEMID	127
+#define GS_COMPID	0
+
+#define MAXINLEN        200
+#define MAXSEND         109
+#define MAX_NUM_WPS     17
+#define PARAM_NAME_LENGTH	16
+
+#define PROTOCOL_TIMEOUT_TICKS 20    ///< maximum time to wait for pending messages until timeout
+
   enum WP_PROTOCOL {
     WP_PROT_IDLE,
     WP_PROT_LIST_REQUESTED,
