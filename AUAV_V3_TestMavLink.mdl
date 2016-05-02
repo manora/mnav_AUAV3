@@ -6,7 +6,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.148"
+    ComputedModelVersion    "1.149"
     NumModelReferences	    0
     NumTestPointedSignals   0
   }
@@ -34,9 +34,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "UglyRed"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Fri Apr 29 07:22:26 2016"
-  RTWModifiedTimeStamp	  383813869
-  ModelVersionFormat	  "1.%<AutoIncrement:148>"
+  LastModifiedDate	  "Mon May 02 06:52:03 2016"
+  RTWModifiedTimeStamp	  384070958
+  ModelVersionFormat	  "1.%<AutoIncrement:149>"
   ConfigurationManager	  "none"
   SampleTimeColors	  on
   SampleTimeAnnotations	  on
@@ -838,17 +838,17 @@ Model {
 		"12  810]';s.ChipIdL1='EP';s.ChipIdL2='MU';s.ChipIdL3='';s.arch3='33E';s.ChipId='33EP512MU810';s.ChipRAM='53248';s.Ch"
 		"ipRAM_XBegin='4096';s.ChipRAM_dma='[53248  57344]';s.FuseConfigTxt='_FGS( GSSK_OFF ) ;_FOSCSEL( FNOSC_PRI ) ;_FOSC( "
 		"POSCMD_XT & OSCIOFNC_ON & FCKSM_CSECME ) ;_FWDT( FWDTEN_OFF ) ;_FPOR( BOREN_OFF & ALTI2C2_ON ) ;_FICD( ICS_PGD3 & JT"
-		"AGEN_OFF ) ;_FAS( APLK_OFF ) ;';s.TimeStep_Timer='1';s.TimeStep_SyncADC='-1';s.ADPCFG='490733628';s.ANSEL='[65471  6"
-		"5475  65535  65535  65506  65535  65535  65535  65535  65535  65535]';s.TRIS='[65471  65475     -1  65535  65514    "
-		" -1  32766     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1 "
-		"    -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     "
-		"-1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1  "
-		"   -1     -1]';s.RPOR='[29    -1    -1    -1  4352     5    -1    -1    -1    -1    -1    -1  4096    -1    -1  1536"
-		"]';s.RPINR='[-1     -1     -1     -1     -1     -1     -1  18496   8011   7701     -1     -1     -1     -1     -1   "
-		"  -1     -1     -1     -1     -1     83     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1"
-		"     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1]';s.CLKDIV='5';s."
-		"PLLFBD='243';s.SWITCH_OSC='16385';s.PLLRNG='-1';s.MASTER_BusyFlag='6';s.POWERSAVE='0';s.MIPS='70000000';s.AN_type2='"
-		"1';s.ADC_PingPong='1';s.NConversionTotal='2';s.NSampleTotal='2';"
+		"AGEN_OFF ) ;_FAS( APLK_OFF ) ;';s.TimeStep_Timer='1';s.TimeStep_SyncADC='-1';s.ADPCFG='1027604540';s.ANSEL='[65471  "
+		"65475  65535  65535  65474  65535  65535  65535  65535  65535  65535]';s.TRIS='[65471  65475     -1  65535  65482  6"
+		"5527  32766     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1"
+		"     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1    "
+		" -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1 "
+		"    -1     -1]';s.RPOR='[-1    -1    -1    -1  4352     5    29    -1   256    -1    -1    -1  4096    -1    -1  153"
+		"6]';s.RPINR='[-1     -1     -1     -1     -1     -1     -1  18496   8011   7701     -1     -1     -1     -1     -1  "
+		"   -1     -1     -1     -1     -1     83     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -"
+		"1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1     -1]';s.CLKDIV='5';s"
+		".PLLFBD='243';s.SWITCH_OSC='16385';s.PLLRNG='-1';s.MASTER_BusyFlag='6';s.POWERSAVE='0';s.MIPS='70000000';s.AN_type2="
+		"'1';s.ADC_PingPong='1';s.NConversionTotal='2';s.NSampleTotal='2';"
 	      }
 	      CustomProperty {
 		DataType		"slbool"
@@ -1221,7 +1221,7 @@ Model {
   }
   System {
     Name		    "AUAV_V3_TestMavLink"
-    Location		    [871, 95, 1335, 612]
+    Location		    [405, 109, 1144, 630]
     Open		    on
     ModelBrowserVisibility  on
     ModelBrowserWidth	    200
@@ -10977,7 +10977,7 @@ Model {
       SourceType	      "Configuration for UART peripheral"
       UART_REF		      "1"
       BAUD_Choice	      "Dynamic Options"
-      BAUD_Choice_TXT	      "     110         [-0.00%]"
+      BAUD_Choice_TXT	      "   57600         [-0.06%]"
       BAUD_Choice_IR	      "Dynamic Options"
       BAUD_Choice_IR_TXT      "[]"
       BAUD_Custom	      "115200"
@@ -10986,13 +10986,13 @@ Model {
       PIN_RX		      "Dynamic Options"
       PIN_RX_TXT	      "A0 / P16 / Pin[17]"
       PIN_TX		      "Dynamic Options"
-      PIN_TX_TXT	      "D0 / P64 / Pin[72]"
+      PIN_TX_TXT	      "F3 / P99 / Pin[51]"
       FlowControl	      "None"
       PIN_CTS		      "Dynamic Options"
       PIN_CTS_TXT	      "A0 / P16 / Pin[17]"
       PIN_RTS		      "Dynamic Options"
       PIN_RTS_TXT	      "D0 / P64 / Pin[72]"
-      MCHP_PORT		      "{UART1  Tx}{U1TX}3:1:P64;"
+      MCHP_PORT		      "{UART1  Tx}{U1TX}3:1:P99;"
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
       MCHP_COM_ExtPil	      off
       TX_IMPLEMENTATION	      "Circular Buffer"
@@ -11005,9 +11005,9 @@ Model {
       RX_INT_PRIORITY	      "1"
       RX_INT_WHEN	      "receive 1 character"
       RX_CIRCULAR_SIZE	      "128"
-      InitSequence_chkbox     on
+      InitSequence_chkbox     off
       BAUD_Choice_InitSeq     "Dynamic Options"
-      BAUD_Choice_InitSeq_TXT "     110         [-0.00%]"
+      BAUD_Choice_InitSeq_TXT "   57600         [-0.06%]"
       BAUD_Choice_IR_InitSeq  "Dynamic Options"
       BAUD_Choice_IR_InitSeq_TXT "0"
       BAUD_Custom_InitSeq     "0"
@@ -11024,7 +11024,7 @@ Model {
       SourceType	      "Configuration for UART peripheral"
       UART_REF		      "4"
       BAUD_Choice	      "Dynamic Options"
-      BAUD_Choice_TXT	      "     110         [-0.00%]"
+      BAUD_Choice_TXT	      "   38400         [-0.06%]"
       BAUD_Choice_IR	      "Dynamic Options"
       BAUD_Choice_IR_TXT      "[]"
       BAUD_Custom	      "115200"
@@ -11033,13 +11033,13 @@ Model {
       PIN_RX		      "Dynamic Options"
       PIN_RX_TXT	      "A0 / P16 / Pin[17]"
       PIN_TX		      "Dynamic Options"
-      PIN_TX_TXT	      "D0 / P64 / Pin[72]"
+      PIN_TX_TXT	      "E5 / P85 / Pin[3]"
       FlowControl	      "None"
       PIN_CTS		      "Dynamic Options"
       PIN_CTS_TXT	      "A0 / P16 / Pin[17]"
       PIN_RTS		      "Dynamic Options"
       PIN_RTS_TXT	      "D0 / P64 / Pin[72]"
-      MCHP_PORT		      "{UART4  Tx}{U4TX}3:1:P64;"
+      MCHP_PORT		      "{UART4  Tx}{U4TX}3:1:P85;"
       MCHP_MASTERLINK	      "AUAV_V3_TestMavLink/Microchip Master\nAUAV V3 Board\nBusy Flag on D2 (RA6)"
       MCHP_COM_ExtPil	      off
       TX_IMPLEMENTATION	      "Circular Buffer"

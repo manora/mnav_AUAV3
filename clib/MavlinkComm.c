@@ -88,7 +88,7 @@ void protDecodeMavlink(void) {
     mavlink_param_set_t set;
     mavlink_message_t msg;
     mavlink_status_t status;
-    uint8_t* dataIn;
+    //uint8_t* dataIn;
     // fix the data length so if the interrupt adds data
     // during execution of this block, it will be read
     // until the next gsRead
